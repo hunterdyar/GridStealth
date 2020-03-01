@@ -2,20 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-public class TilemapManager : MonoBehaviour
+using Sirenix.OdinInspector;
+public class TilemapManager : ScriptableObject
 {
+    public Dictionary<Vector2Int,TileNode> level = new Dictionary<Vector2Int,TileNode>();
+    public List<TileNode> allTileNodes = new List<TileNode>();
     public int brightnessScale = 10;
     static Vector2Int[] cardinalDirections = new Vector2Int[]{Vector2Int.up,Vector2Int.right,Vector2Int.down,Vector2Int.left};
-    public Vector3Int testingToRed;
     public Tilemap tilemap;
-    void Awake()
+
+    [Button]
+    public void InitiateNodes()
     {
-        tilemap = GetComponent<Tilemap>();
+        level = new Dictionary<Vector2Int, TileNode>();
+        allTileNodes = new List<TileNode>();
+        foreach(Vector3Int p3 in tilemap.cellBounds.allPositionsWithin)
+        {
+            if(tilemap.HasTile(p3))
+            {
+                TileBase tile = tilemap.GetTile(p3);
+                if(tile is LevelTile)
+                {
+                    TileNode node = new TileNode();
+                    node.position = (Vector2Int)p3;
+                    node.solid = ((LevelTile)tile).solid;
+                    //Initiate things
+                    level.Add(node.position,node);
+                    allTileNodes.Add(node);
+                }
+            }
+        }
     }
-    [ContextMenu("Testing To Red To Red")]
-    void TestingToRed()
+    public void RemoveNode(Vector2Int at)
     {
-        tilemap.SetColor(testingToRed,Color.red);
+        TileNode n = level[at];
+        allTileNodes.Remove(n);
+        level.Remove(at);
+    }
+    public TileNode GetTileNode(Vector2Int pos)
+    {
+        if(level.ContainsKey(pos))
+        {
+            return level[pos];
+        }else
+        {
+            return null;
+        }
+
     }
     public Vector2Int WorldToCell(Vector3 worldPos){
         return (Vector2Int)tilemap.WorldToCell(worldPos);
@@ -64,12 +97,12 @@ public class TilemapManager : MonoBehaviour
     {
         return IsSolid(new Vector2Int(x,y));
     }
-    public LevelTile[] GetNeighborsTo(LevelTile gridItem)
+    public TileNode[] GetNeighborsTo(TileNode gridItem)
     {
-        List<LevelTile> neighbors = new List<LevelTile>();
+        List<TileNode> neighbors = new List<TileNode>();
         foreach(Vector2Int dir in cardinalDirections)
         {
-            LevelTile n = GetLevelTile(gridItem.position+dir);
+            TileNode n = GetTileNode(gridItem.position+dir);
             if(n!=null)
             {
                 neighbors.Add(n);
@@ -80,7 +113,6 @@ public class TilemapManager : MonoBehaviour
 
     public void UpdateBrightnessDisplay()
     {
-        Debug.Log("updating brightness display");
         foreach(Vector3Int p3 in tilemap.cellBounds.allPositionsWithin)
         {
             if(HasLevelTile((Vector2Int)p3) && p3.z == 0)
@@ -88,27 +120,33 @@ public class TilemapManager : MonoBehaviour
                 //flags should be none
                 tilemap.SetTileFlags(p3, TileFlags.None);
                 //cool
-                LevelTile t = GetLevelTile((Vector2Int)p3);
-                float b01 = Mathf.Clamp01((float)t.brightness/(float)brightnessScale);//brightness mapped 0-1;
-                // Debug.Log("setting tile "+p3+" to "+b01);
-                tilemap.SetColor(p3,new Color(b01,b01,b01,1));
+                TileNode t = GetTileNode((Vector2Int)p3);
+                if(!t.solid){
+                    float b01 = Mathf.Clamp01((float)t.brightness/(float)brightnessScale);
+                    // Debug.Log("setting tile "+p3+" to "+b01);
+                    tilemap.SetColor(p3,new Color(b01,b01,b01,1));
+                }
             }
         }
     }
 
 
     //See superCover
-    public bool LineOfSight(LevelTile a,LevelTile b)
+    public bool LineOfSight(TileNode a,TileNode b)
+    {
+        return LineOfSight(a.position,b.position);
+    }
+    public bool LineOfSight(Vector2Int a,Vector2Int b)
     {
         int i;               // loop counter 
         int ystep, xstep;    // the step on y and x axis 
         int error;           // the error accumulated during the increment 
         int errorprev;       // *vision the previous value of the error variable 
-        int y = a.position.y;
-        int x = a.position.x;  // the line points 
+        int y = a.y;
+        int x = a.x;  // the line points 
         int ddy, ddx;        // compulsory variables: the double values of dy and dx 
-        int dx = b.position.x - a.position.x; 
-        int dy = b.position.y - a.position.y; 
+        int dx = b.x - a.x; 
+        int dy = b.y - a.y; 
         // NB the last point can't be here, because of its previous point (which has to be verified) 
         if (dy < 0){ 
             ystep = -1; 
@@ -208,6 +246,6 @@ public class TilemapManager : MonoBehaviour
             } 
         }
         //assert
-        return ((y == b.position.y) && (x == b.position.x));
+        return ((y == b.y) && (x == b.x));
     }
 }

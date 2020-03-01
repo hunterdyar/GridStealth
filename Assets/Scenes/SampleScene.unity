@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 155432552}
   - component: {fileID: 155432553}
   m_Layer: 0
-  m_Name: TileLight
+  m_Name: Grid Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506697cc73953124a801079918dd2f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapManager: {fileID: 1579664408}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   brightness: 4
 --- !u!1 &519420028
 GameObject:
@@ -1560,9 +1560,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579664404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d08e75f4dd4af44c926bf717307f2a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 92fdd0ca017355f46af357dc19414d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brightnessScale: 10
-  testingToRed: {x: 4, y: 0, z: 0}
+  manager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   tilemap: {fileID: 1579664407}

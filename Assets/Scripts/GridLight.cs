@@ -1,46 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 public class GridLight : MonoBehaviour
 {
+    [Title("Configuration")]
     public TilemapManager tilemapManager;
+    [Title("Settings")]
     public int brightness;
+    public Vector2Int prevPos;//for update on movement
     public Vector2Int position{get{return GridPosition();}}
-    
-    
     public Vector2Int GridPosition()
     {
         return tilemapManager.WorldToCell(transform.position);
     }
-    [ContextMenu("Illuminate")]
+    [Button("Illuminate")]
     void Illuminate()
     {
-        Debug.Log("illuminate");
+        //remove self from all levelNodes.
+        foreach(TileNode t in tilemapManager.allTileNodes)
+        {
+            if(t.lightsOnMe.Contains(this)){
+                t.lightsOnMe.Remove(this);
+                t.SetBrightness();
+            }
+        }
+
         Vector2Int[] c = GridUtility.Circle(position,brightness);
-        Debug.Log("need up update "+c.Length+" tiles");
         foreach(Vector2Int p in c)
         {
-            LevelTile gi = tilemapManager.GetLevelTile(p);
-            if(gi!=null)
+            TileNode tn = tilemapManager.GetTileNode(p);
+            if(tn!=null)
             {
-                Debug.Log("updating brightness for "+gi.position);
-
-                if(tilemapManager.LineOfSight(tilemapManager.GetLevelTile(position),gi))
-                {
-                    gi.brightness = brightness - GridUtility.ManhattanDistance(position,gi.position);
+                if(tilemapManager.LineOfSight(tn.position,position)){
+                    if(!tn.lightsOnMe.Contains(this)){
+                        tn.lightsOnMe.Add(this);
+                        tn.SetBrightness();
+                    }
                 }
             }
         }
         tilemapManager.UpdateBrightnessDisplay();
     }
 
-
-    void SetBrightnessOfNeighbors(LevelTile starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
+    void Update()
+    {
+        if(prevPos!=position)
+        {
+            Illuminate();
+        }
+    }
+    public int BrightnessForTile(Vector2Int tilePos)
+    {
+        return brightness - GridUtility.ManhattanDistance(position,tilePos);
+    }
+    void SetBrightnessOfNeighbors(TileNode starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
     {
         checkedN.Add(starting.position);
-        List<LevelTile> ns = new List<LevelTile>(tilemapManager.GetNeighborsTo(starting));
-        foreach(LevelTile n in ns)
+        List<TileNode> ns = new List<TileNode>(tilemapManager.GetNeighborsTo(starting));
+        foreach(TileNode n in ns)
         {
             if(depth <= maxDepth)
             {

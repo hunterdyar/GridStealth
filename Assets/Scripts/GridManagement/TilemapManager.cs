@@ -125,7 +125,8 @@ public class TilemapManager : ScriptableObject
                 // if(!t.solid){
                     float b01 = Mathf.Clamp01((float)t.brightness/(float)brightnessScale);
                     // Debug.Log("setting tile "+p3+" to "+b01);
-                    tilemap.SetColor(p3,new Color(b01,b01,b01,1));
+                    Color brightColor = Color.white;//
+                    tilemap.SetColor(p3,Color.Lerp(Color.black,brightColor,b01));
                 // }
             }
         }

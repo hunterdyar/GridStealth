@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-public class GridLight : GridElement
+[RequireComponent(typeof(GridElement))]
+public class GridLight : MonoBehaviour
 {
-    
-    
+    Vector2Int position {get{return gridElement.position;}}
+    GridElement gridElement;
+    public int lightIntensity;
+    public int lightRange;
+    [Button("Assign gridElement")]
+    void Awake()
+    {
+        gridElement = GetComponent<GridElement>();
+        gridElement.OnNewPositionAction += Illuminate;
+    }
     [Button("Illuminate")]
     void Illuminate()
     {
         //remove self from all levelNodes.
-        foreach(TileNode t in tilemapManager.allTileNodes)
+        foreach(TileNode t in gridElement.tilemapManager.allTileNodes)
         {
             if(t.lightsOnMe.Contains(this)){
                 t.lightsOnMe.Remove(this);
@@ -18,13 +27,13 @@ public class GridLight : GridElement
             }
         }
 
-        Vector2Int[] c = GridUtility.Circle(position,brightness);
+        Vector2Int[] c = GridUtility.Circle(position,lightRange);
         foreach(Vector2Int p in c)
         {
-            TileNode tn = tilemapManager.GetTileNode(p);
+            TileNode tn = gridElement.tilemapManager.GetTileNode(p);
             if(tn!=null)
             {
-                if(tilemapManager.LineOfSight(tn.position,position)){
+                if(gridElement.tilemapManager.LineOfSight(tn.position,position)){
                     if(!tn.lightsOnMe.Contains(this)){
                         tn.lightsOnMe.Add(this);
                         tn.SetBrightness();
@@ -32,21 +41,17 @@ public class GridLight : GridElement
                 }
             }
         }
-        tilemapManager.UpdateBrightnessDisplay();
+        gridElement.tilemapManager.UpdateBrightnessDisplay();
     }
 
-    public override void OnNewPosition(){
-        base.OnNewPosition();
-        Illuminate();
-    }
     public int BrightnessForTile(Vector2Int tilePos)
     {
-        return brightness - GridUtility.ManhattanDistance(position,tilePos);
+        return (int)Mathf.Max(0,((lightIntensity - GridUtility.ManhattanDistance(position,tilePos))/(float)lightIntensity)*gridElement.tilemapManager.brightnessScale);
     }
     void SetBrightnessOfNeighbors(TileNode starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
     {
         checkedN.Add(starting.position);
-        List<TileNode> ns = new List<TileNode>(tilemapManager.GetNeighborsTo(starting));
+        List<TileNode> ns = new List<TileNode>(gridElement.tilemapManager.GetNeighborsTo(starting));
         foreach(TileNode n in ns)
         {
             if(depth <= maxDepth)
@@ -55,7 +60,7 @@ public class GridLight : GridElement
                 {
                     // if(holdingGrid.LineOfSight(this,n))
                     // {
-                        n.brightness = brightness - GridUtility.ManhattanDistance(position,n.position);
+                        n.brightness = gridElement.brightness - GridUtility.ManhattanDistance(position,n.position);
                         checkedN.Add(n.position);
                         //Recursion!
                         SetBrightnessOfNeighbors(n,depth+1,maxDepth,ref checkedN);

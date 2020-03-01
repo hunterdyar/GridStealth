@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 public class GridElement : MonoBehaviour
 {
     [Title("Configuration")]
@@ -12,6 +13,7 @@ public class GridElement : MonoBehaviour
     public int brightness;
     Vector2Int prevPos;//for update on movement
     public Vector2Int position{get{return GridPosition();}}
+    public Action OnNewPositionAction;
     public Vector2Int GridPosition()
     {
         return tilemapManager.WorldToCell(transform.position);
@@ -21,10 +23,11 @@ public class GridElement : MonoBehaviour
         if(prevPos!=position)
         {
             OnNewPosition();
+            
             prevPos = position;
         }
     }
-    public virtual void OnNewPosition(){
+    public void OnNewPosition(){
         //tell the previous tileNode and current tileNode if we are solid.
         if(tileNode != null){
             if(tileNode.itemsHere.Contains(this))
@@ -41,5 +44,8 @@ public class GridElement : MonoBehaviour
                 Debug.LogWarning("tile node already had gridElement. This should never happen.");
             }
         }//else: our object was moved where there isnt a tile. 
+        if(OnNewPositionAction != null){
+            OnNewPositionAction();
+        }
     }
 }

@@ -189,6 +189,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   lightRange: 5
 --- !u!114 &155432554
 MonoBehaviour:
@@ -387,6 +388,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   lightRange: 5
 --- !u!114 &1306990046
 MonoBehaviour:
@@ -2525,7 +2527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
-  solid: 1
+  solid: 0
   opaque: 1
   brightness: 0
 --- !u!4 &1724731404
@@ -2700,7 +2702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
-  solid: 1
+  solid: 0
   opaque: 1
   brightness: 0
 --- !u!4 &1908400779
@@ -2750,7 +2752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushable: 0
+  pushable: 1
 --- !u!212 &2039513806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2814,8 +2816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
-  solid: 1
-  opaque: 0
+  solid: 0
+  opaque: 1
   brightness: 0
 --- !u!4 &2039513808
 Transform:
@@ -2867,6 +2869,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  gfm: {fileID: 0}
   lightRange: 1
 --- !u!114 &2039513810
 MonoBehaviour:
@@ -2880,3 +2883,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadb75b1df5fd8a40b6ee39f88130b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}

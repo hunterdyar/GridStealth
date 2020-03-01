@@ -6,26 +6,34 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     Agent agent;
+    public GameFlowManager gfm;
     void Awake()
     {
         agent = GetComponent<Agent>();
+        //temp init code for gfm
+        gfm.Init();
+        GameFlowManager.instance = gfm;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!gfm.playerCanMove){return;}
+        bool moved = false;
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            agent.Move(Vector2Int.right);
+            moved = agent.Move(Vector2Int.right);
         }else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            agent.Move(Vector2Int.left);
+            moved = agent.Move(Vector2Int.left);
         }else if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            agent.Move(Vector2Int.up);
+            moved = agent.Move(Vector2Int.up);
         }else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            agent.Move(Vector2Int.down);
+            moved = agent.Move(Vector2Int.down);
         }
+        //
+        if(moved){gfm.PlayerTookTurn();}
     }
 }

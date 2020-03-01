@@ -8,12 +8,21 @@ public class GridLight : MonoBehaviour
     Vector2Int position {get{return gridElement.position;}}
     GridElement gridElement;
     public AnimationCurve lightFalloffCurve;
+    public GameFlowManager gfm;
     public int lightRange;
     [Button("Assign gridElement")]
     void Awake()
     {
         gridElement = GetComponent<GridElement>();
         gridElement.OnNewPositionAction += Illuminate;
+    }
+    void OnEnable()
+    {
+        gfm.PostGridElementsUpdatedAction += Illuminate;
+    }
+    void OnDisable()
+    {
+        gfm.PostGridElementsUpdatedAction -= Illuminate;
     }
     [Button("Illuminate")]
     void Illuminate()

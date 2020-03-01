@@ -11,6 +11,11 @@ public class Agent : MonoBehaviour
     void Awake()
     {
         gridElement = GetComponent<GridElement>();
+        if(gridElement.solid && pushable)
+        {
+            Debug.LogWarning("Agent is pushable but gridElement is set to solid. overriding gridElement solid to false");
+            gridElement.solid = false;
+        }
     }
     public bool Move(Vector2Int dir)
     {
@@ -37,12 +42,12 @@ public class Agent : MonoBehaviour
     {
         TileNode next = gridElement.tilemapManager.GetTileNode(position+dir);
         if(next == null){return false;}
-        // if(next.solid){return false;}
+        if(next.solid){return false;}
         List<GridElement> atNode = next.itemsHere;
         foreach(GridElement gein in next.itemsHere)
         {
             //can we push solid things?
-            // if(gein.solid){return false;}
+            if(gein.solid){return false;}
             if(gein.GetComponent<Agent>() != null)
             {
                 Agent neigh = gein.GetComponent<Agent>();

@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 // [CreateAssetMenu(fileName = "litTile",menuN)]
 public class LevelTile : Tile
 {
-    public int brightness;
     public bool solid;
+    public bool opaque;
     public Vector2Int position;
 
     // public List<GridLight> litBy = new List<GridLight>();

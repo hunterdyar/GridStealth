@@ -9,6 +9,7 @@ public class GridElement : MonoBehaviour
     public TilemapManager tilemapManager;
     public TileNode tileNode;
     public bool solid = false;
+    public bool opaque = false;
     [Title("Settings")]
     public int brightness;
     Vector2Int prevPos;//for update on movement

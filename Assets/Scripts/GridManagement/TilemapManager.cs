@@ -26,7 +26,7 @@ public class TilemapManager : ScriptableObject
                     TileNode node = new TileNode();
                     node.position = (Vector2Int)p3;
                     node.isSolid = ((LevelTile)tile).solid;
-                    
+                    node.isOpaque = ((LevelTile)tile).opaque;
                     //Initiate things
                     level.Add(node.position,node);
                     allTileNodes.Add(node);
@@ -97,6 +97,19 @@ public class TilemapManager : ScriptableObject
     public bool IsSolid(int x,int y)
     {
         return IsSolid(new Vector2Int(x,y));
+    }
+    public bool IsOpaque(Vector2Int pos)
+    {
+        if(HasLevelTile(pos))
+        {
+            return GetTileNode(pos).opaque;
+        }else{
+            return true;//empty spaces are opaque
+        }
+    }
+    public bool IsOpaque(int x,int y)
+    {
+        return IsOpaque(new Vector2Int(x,y));
     }
     public TileNode[] GetNeighborsTo(TileNode gridItem)
     {
@@ -176,22 +189,22 @@ public class TilemapManager : ScriptableObject
                     y += ystep; 
                     error -= ddx; 
                     // three cases (octant == right->right-top for directions below): 
-                    if(IsSolid(x,y))
+                    if(IsOpaque(x,y))
                     {
                         return false;
                     }
                     //
-                    if (error + errorprev < ddx && !IsSolid(x,y-ystep))
+                    if (error + errorprev < ddx && !IsOpaque(x,y-ystep))
                     {
                         // Debug.Log("case a");
                         // GetItem(new Vector2Int(x,y-ystep)).GetComponent<SpriteRenderer>().color = Color.red;
                     }  // bottom square also 
-                    else if (error + errorprev > ddx && !IsSolid(x-xstep,y))
+                    else if (error + errorprev > ddx && !IsOpaque(x-xstep,y))
                     {  // left square also 
                         // Debug.Log("case b");
                         // GetItem(new Vector2Int(x-xstep,y)).GetComponent<SpriteRenderer>().color = Color.green;
 
-                    }else if(!IsSolid(x,y-ystep) || !IsSolid(x-xstep,y)){
+                    }else if(!IsOpaque(x,y-ystep) || !IsOpaque(x-xstep,y)){
                         // Debug.Log("case c");
                         // GetItem(new Vector2Int(x-xstep,y)).GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -201,7 +214,7 @@ public class TilemapManager : ScriptableObject
                 }
                 else
                 {
-                    if(IsSolid(x,y))
+                    if(IsOpaque(x,y))
                     {
                         return false;
                     }
@@ -221,15 +234,15 @@ public class TilemapManager : ScriptableObject
             { 
                 x += xstep; 
                 error -= ddy; 
-                if(IsSolid(x,y)){return false;}
+                if(IsOpaque(x,y)){return false;}
 
-                if (error + errorprev < ddy && !IsSolid(x-xstep,y))
+                if (error + errorprev < ddy && !IsOpaque(x-xstep,y))
                 {
                     //case a
-                }else if (error + errorprev > ddy && !IsSolid(x,y-ystep))
+                }else if (error + errorprev > ddy && !IsOpaque(x,y-ystep))
                 {
                     //case b
-                }else if(!IsSolid(x-xstep,y) || !IsSolid(x,y-ystep))
+                }else if(!IsOpaque(x-xstep,y) || !IsOpaque(x,y-ystep))
                 {
                     //case c
                 }else{
@@ -238,7 +251,7 @@ public class TilemapManager : ScriptableObject
             }
             else
             {
-                if(IsSolid(x,y))
+                if(IsOpaque(x,y))
                 {
                     return false;
                 }

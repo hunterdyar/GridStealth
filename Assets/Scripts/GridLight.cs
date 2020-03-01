@@ -12,16 +12,28 @@ public class GridLight : GridItem
         brightness = myBrightness;
         c = new List<Vector2Int>();
         SetBrightnessOfNeighbors(this,0,(int)myBrightness,ref c);
+        // Vector2Int[] c = GridManager.BresenCircle(position,myBrightness);
+                // holdingGrid = GameObject.FindObjectOfType<GridManager>();
+
+        // foreach(Vector2Int p in c)
+        // {
+            
+        //     GridItem gi = holdingGrid.GetItem(p);
+        //     if(gi!=null)
+        //     {
+        //         gi.brightness = myBrightness;
+        //     }
+        // }
     }
 
 
     void SetBrightnessOfNeighbors(GridItem starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
     {
+        checkedN.Add(starting.position);
         holdingGrid = GameObject.FindObjectOfType<GridManager>();
         List<GridItem> ns = new List<GridItem>(holdingGrid.GetNeighborsTo(starting));
         foreach(GridItem n in ns)
         {
-            Debug.Log("check "+n.position);
             if(depth <= maxDepth)
             {
                 if(!checkedN.Contains(n.position))
@@ -32,9 +44,9 @@ public class GridLight : GridItem
                         checkedN.Add(n.position);
                         //Recursion!
                         SetBrightnessOfNeighbors(n,depth+1,maxDepth,ref checkedN);
-                    }
-                }
-            }
+                    }else{Debug.Log("no line of sight,"+n.position);}
+                }else{Debug.Log("already checked, "+n.position);}
+            }else{Debug.Log("max depth past, "+depth+", "+n.position);}
         }
     }
 }

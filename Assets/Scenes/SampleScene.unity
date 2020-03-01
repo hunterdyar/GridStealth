@@ -2320,7 +2320,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 59b82a6b5537fca478605191d0d17784, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4936,8 +4936,12 @@ MonoBehaviour:
   holdingGrid: {fileID: 0}
   initializeOnAwake: 1
   solid: 0
-  brightness: 0
-  c: []
+  brightness: 7
+  c:
+  - {x: 3, y: 0}
+  - {x: 5, y: 0}
+  - {x: 6, y: 0}
+  - {x: 0, y: 0}
   myBrightness: 7
 --- !u!212 &1074509579
 SpriteRenderer:
@@ -4977,7 +4981,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 40
   m_Sprite: {fileID: 21300000, guid: da27637ac0cf8c3458ed602c6186df23, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -9041,7 +9045,7 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   holdingGrid: {fileID: 0}
   initializeOnAwake: 1
-  solid: 1
+  solid: 0
   brightness: 0
 --- !u!212 &1852972477
 SpriteRenderer:

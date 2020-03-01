@@ -24,7 +24,13 @@ public class GridItem : MonoBehaviour
         GridManager grid = GameObject.FindObjectOfType<GridManager>();
         grid.AddGridItem(position,this);
     }
-    public void Update()
+    
+    //Editor Testing
+    void Update()
+    {
+        UpdateColor();
+    }
+    void UpdateColor()
     {
         if(solid)
         {

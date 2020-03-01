@@ -325,4 +325,24 @@ public class GridManager : MonoBehaviour
         }
         return blocks.ToArray();
     }
+    public static Vector2Int[] BresenCircle(Vector2Int a, int radius)
+    {
+            // void plotCircle(int xm, int ym, int r)
+        int r = radius;
+        int xm = a.x;
+        int ym = a.y;
+        List<Vector2Int> c = new List<Vector2Int>();
+        int x = -r, y = 0, err = 2-2*r; /* II. Quadrant */ 
+        do {
+            c.Add(new Vector2Int(xm-x, ym+y)); /*   I. Quadrant */
+            c.Add(new Vector2Int(xm-y, ym-x)); /*  II. Quadrant */
+            c.Add(new Vector2Int(xm+x, ym-y)); /* III. Quadrant */
+            c.Add(new Vector2Int(xm+y, ym+x)); /*  IV. Quadrant */
+            r = err;
+            if (r <= y) err += ++y*2+1;           /* e_xy+e_y < 0 */
+            if (r > x || err > y) err += ++x*2+1; /* e_xy+e_x > 0 or no 2nd y-step */
+        } while (x < 0);
+        
+        return c.ToArray();
+    }
 }

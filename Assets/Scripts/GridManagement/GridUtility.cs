@@ -169,5 +169,51 @@ public class GridUtility
         }
         return c.ToArray();
     }
-
+    public static int CompareV2ByTopLeft(Vector2Int a, Vector2Int b)
+    {
+        if (a == null)
+        {
+            if (b == null)
+            {
+                // If x is null and y is null, they're
+                // equal. 
+                return 0;
+            }
+            else
+            {
+                // If x is null and y is not null, y
+                // is greater. 
+                return -1;
+            }
+        }
+        else
+        {
+            // If x is not null...
+            //
+            if (b == null)
+                // ...and y is null, x is greater.
+            {
+                return 1;
+            }
+            else
+            {
+                // ...and y is not null, compare them.
+                int xDiff = a.x-b.x;
+                xDiff = Mathf.Clamp(-1,1,xDiff);
+                if (xDiff != 0)
+                {
+                    // If x values are different
+  
+                    return xDiff;
+                }
+                else
+                {
+                    //compare y diff
+                    int yDiff = b.y-a.y;//should this be b-a?
+                        xDiff = Mathf.Clamp(-1,1,yDiff);
+                    return yDiff;
+                }
+            }
+        }
+    }
 }

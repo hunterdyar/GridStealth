@@ -9,7 +9,7 @@ public class GameFlowManager : ScriptableObject
     public TilemapManager tilemapManager;
     public Action PostGridElementsUpdatedAction;
     public bool playerCanMove;//waiting for player input.
-
+    public List<AIBase> lumpAI;
     [Button("Set Singleton")]
     public void SetSingleton(){instance = this;}
     public void Init()
@@ -25,14 +25,21 @@ public class GameFlowManager : ScriptableObject
         //
 
         //Update Lights, things that care that objects have moved.
-        if(PostGridElementsUpdatedAction != null)
-        {
-            PostGridElementsUpdatedAction.Invoke();
-        }
+        
+        PostGridElementsUpdatedAction?.Invoke();
+        
         //Update Lights, displayed.
         tilemapManager.UpdateBrightnessDisplay();
         //
         playerCanMove = true;
     }
+
+    void SortAI()
+    {
+        lumpAI.Sort(delegate(AIBase a,AIBase b){
+            return GridUtility.CompareV2ByTopLeft(a.gridElement.position,b.gridElement.position);
+        });
+    }
+    //
 
 }

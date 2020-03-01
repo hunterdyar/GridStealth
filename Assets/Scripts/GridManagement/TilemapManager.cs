@@ -25,7 +25,8 @@ public class TilemapManager : ScriptableObject
                 {
                     TileNode node = new TileNode();
                     node.position = (Vector2Int)p3;
-                    node.solid = ((LevelTile)tile).solid;
+                    node.isSolid = ((LevelTile)tile).solid;
+                    
                     //Initiate things
                     level.Add(node.position,node);
                     allTileNodes.Add(node);
@@ -88,7 +89,7 @@ public class TilemapManager : ScriptableObject
     {
         if(HasLevelTile(pos))
         {
-            return GetLevelTile(pos).solid;
+            return GetTileNode(pos).solid;
         }else{
             return true;//empty spaces are solid
         }
@@ -121,11 +122,11 @@ public class TilemapManager : ScriptableObject
                 tilemap.SetTileFlags(p3, TileFlags.None);
                 //cool
                 TileNode t = GetTileNode((Vector2Int)p3);
-                if(!t.solid){
+                // if(!t.solid){
                     float b01 = Mathf.Clamp01((float)t.brightness/(float)brightnessScale);
                     // Debug.Log("setting tile "+p3+" to "+b01);
                     tilemap.SetColor(p3,new Color(b01,b01,b01,1));
-                }
+                // }
             }
         }
     }

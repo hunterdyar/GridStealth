@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-public class GridLight : MonoBehaviour
+public class GridLight : GridElement
 {
-    [Title("Configuration")]
-    public TilemapManager tilemapManager;
-    [Title("Settings")]
-    public int brightness;
-    public Vector2Int prevPos;//for update on movement
-    public Vector2Int position{get{return GridPosition();}}
-    public Vector2Int GridPosition()
-    {
-        return tilemapManager.WorldToCell(transform.position);
-    }
+    
+    
     [Button("Illuminate")]
     void Illuminate()
     {
@@ -43,12 +35,9 @@ public class GridLight : MonoBehaviour
         tilemapManager.UpdateBrightnessDisplay();
     }
 
-    void Update()
-    {
-        if(prevPos!=position)
-        {
-            Illuminate();
-        }
+    public override void OnNewPosition(){
+        base.OnNewPosition();
+        Illuminate();
     }
     public int BrightnessForTile(Vector2Int tilePos)
     {

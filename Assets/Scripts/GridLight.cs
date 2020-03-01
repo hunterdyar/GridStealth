@@ -2,49 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridLight : GridItem
+public class GridLight : MonoBehaviour
 {
-    public List<Vector2Int> c;
-    public int myBrightness;
+    public TilemapManager tilemapManager;
+    public int brightness;
+    public Vector2Int position{get{return GridPosition();}}
+    
+    
+    public Vector2Int GridPosition()
+    {
+        return tilemapManager.WorldToCell(transform.position);
+    }
     [ContextMenu("Illuminate")]
     void Illuminate()
     {
-        brightness = myBrightness;
-        c = new List<Vector2Int>();
-        SetBrightnessOfNeighbors(this,0,(int)myBrightness,ref c);
-        // Vector2Int[] c = GridManager.BresenCircle(position,myBrightness);
-                // holdingGrid = GameObject.FindObjectOfType<GridManager>();
+        Debug.Log("illuminate");
+        Vector2Int[] c = GridUtility.Circle(position,brightness);
+        Debug.Log("need up update "+c.Length+" tiles");
+        foreach(Vector2Int p in c)
+        {
+            LevelTile gi = tilemapManager.GetLevelTile(p);
+            if(gi!=null)
+            {
+                Debug.Log("updating brightness for "+gi.position);
 
-        // foreach(Vector2Int p in c)
-        // {
-            
-        //     GridItem gi = holdingGrid.GetItem(p);
-        //     if(gi!=null)
-        //     {
-        //         gi.brightness = myBrightness;
-        //     }
-        // }
+                if(tilemapManager.LineOfSight(tilemapManager.GetLevelTile(position),gi))
+                {
+                    gi.brightness = brightness - GridUtility.ManhattanDistance(position,gi.position);
+                }
+            }
+        }
+        tilemapManager.UpdateBrightnessDisplay();
     }
 
 
-    void SetBrightnessOfNeighbors(GridItem starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
+    void SetBrightnessOfNeighbors(LevelTile starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
     {
         checkedN.Add(starting.position);
-        holdingGrid = GameObject.FindObjectOfType<GridManager>();
-        List<GridItem> ns = new List<GridItem>(holdingGrid.GetNeighborsTo(starting));
-        foreach(GridItem n in ns)
+        List<LevelTile> ns = new List<LevelTile>(tilemapManager.GetNeighborsTo(starting));
+        foreach(LevelTile n in ns)
         {
             if(depth <= maxDepth)
             {
                 if(!checkedN.Contains(n.position))
                 {
-                    if(holdingGrid.LineOfSight(this,n))
-                    {
-                        n.brightness = myBrightness - GridManager.ManhattanDistance(position,n.position);
+                    // if(holdingGrid.LineOfSight(this,n))
+                    // {
+                        n.brightness = brightness - GridUtility.ManhattanDistance(position,n.position);
                         checkedN.Add(n.position);
                         //Recursion!
                         SetBrightnessOfNeighbors(n,depth+1,maxDepth,ref checkedN);
-                    }else{Debug.Log("no line of sight,"+n.position);}
+                    // }else{Debug.Log("no line of sight,"+n.position);}
                 }else{Debug.Log("already checked, "+n.position);}
             }else{Debug.Log("max depth past, "+depth+", "+n.position);}
         }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543989414f54ed7459f0a0f1d161b4bb, type: 3}
   m_Name: solidLevelTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 59b82a6b5537fca478605191d0d17784, type: 3}
-  m_Color: {r: 0, g: 0.27121687, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0fe479c7dccb23142ae8c8c1979f2b47, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

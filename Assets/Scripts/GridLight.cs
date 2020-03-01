@@ -7,7 +7,7 @@ public class GridLight : MonoBehaviour
 {
     Vector2Int position {get{return gridElement.position;}}
     GridElement gridElement;
-    public int lightIntensity;
+    public AnimationCurve lightFalloffCurve;
     public int lightRange;
     [Button("Assign gridElement")]
     void Awake()
@@ -44,9 +44,9 @@ public class GridLight : MonoBehaviour
         gridElement.tilemapManager.UpdateBrightnessDisplay();
     }
 
-    public int BrightnessForTile(Vector2Int tilePos)
+    public float BrightnessForTile(Vector2Int tilePos)
     {
-        return (int)Mathf.Max(0,((lightIntensity - GridUtility.ManhattanDistance(position,tilePos))/(float)lightIntensity)*gridElement.tilemapManager.brightnessScale);
+        return (lightFalloffCurve.Evaluate((lightRange - GridUtility.ManhattanDistance(position,tilePos))/(float)lightRange));
     }
     void SetBrightnessOfNeighbors(TileNode starting, int depth, int maxDepth,ref List<Vector2Int> checkedN)
     {

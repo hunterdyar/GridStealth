@@ -7,7 +7,7 @@ public class TileNode
     public Vector2Int position;
     public bool isSolid;//assigned by tile
     public bool solid { get{return IsSolid();}}//currently solid.
-    public int brightness = 0;
+    public float brightness = 0;
     public GameObject gameObjectHere;
     //things that are on this square.
     public List<GridElement> itemsHere = new List<GridElement>();

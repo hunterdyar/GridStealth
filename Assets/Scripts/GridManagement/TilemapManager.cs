@@ -123,7 +123,7 @@ public class TilemapManager : ScriptableObject
                 //cool
                 TileNode t = GetTileNode((Vector2Int)p3);
                 // if(!t.solid){
-                    float b01 = Mathf.Clamp01((float)t.brightness/(float)brightnessScale);
+                    float b01 = Mathf.Clamp01((float)t.brightness);///(float)brightnessScale
                     // Debug.Log("setting tile "+p3+" to "+b01);
                     Color brightColor = Color.white;//
                     tilemap.SetColor(p3,Color.Lerp(Color.black,brightColor,b01));

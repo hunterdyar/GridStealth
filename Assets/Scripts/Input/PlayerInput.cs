@@ -32,6 +32,5 @@ public class PlayerInput : MonoBehaviour
             moved = agent.Move(Vector2Int.down);
         }
         //
-        if(moved.turnTaken){gfm.PlayerTookTurn();}
     }
 }

@@ -76,7 +76,6 @@ public class GameFlowManager : ScriptableObject
     void SortAI()
     {
         lumpAI.Sort();
-        Debug.Log("sorted");
     }
     //
 

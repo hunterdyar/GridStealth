@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class TurnInfo
 {
+    public Action endOfMoveAction;
     public bool turnTaken = true;
     public bool turnInMotion = false;
     public bool blockPlayerMovement = false;
@@ -28,5 +29,6 @@ public class TurnInfo
         turnInMotion = false;
         blockPlayerMovement = false;
         blockAIMovement = false;
+        endOfMoveAction?.Invoke();
     }
 }

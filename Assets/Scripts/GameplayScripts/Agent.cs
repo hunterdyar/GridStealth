@@ -25,7 +25,6 @@ public class Agent : MonoBehaviour
     protected virtual void MoveEnded()
     {
         gridElement.OnNewPosition();
-        Debug.Log("MoveEnded");
     }
 
     public TurnInfo DoMove(Vector2Int dir, TurnInfo info)

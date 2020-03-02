@@ -9,7 +9,7 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 
     public GridElement gridElement;
 
-    void Awake()
+    protected void Awake()
     {
         gridElement = GetComponent<GridElement>();
     }

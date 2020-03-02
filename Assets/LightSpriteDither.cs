@@ -20,7 +20,7 @@ public class LightSpriteDither : MonoBehaviour
             if(setBrightness != tileNode.brightness)
             {
                 setBrightness = tileNode.brightness;
-                int index = Mathf.FloorToInt(setBrightness*ditherPatterns.Count);
+                int index = Mathf.FloorToInt(Mathf.Clamp01(1-setBrightness)*(ditherPatterns.Count-1));
                 sr.sprite = ditherPatterns[index];
             }
         }

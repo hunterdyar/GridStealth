@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8967e979e5e679c46b167b287f22aea5, type: 3}
   m_Name: GameFlowManager
   m_EditorClassIdentifier: 
+  runner: {fileID: 0}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   playerCanMove: 1
   lumpAI: []

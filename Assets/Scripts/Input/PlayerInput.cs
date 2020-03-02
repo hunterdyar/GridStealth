@@ -10,9 +10,7 @@ public class PlayerInput : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<Agent>();
-        //temp init code for gfm
-        gfm.Init();
-        GameFlowManager.instance = gfm;
+      
     }
 
     // Update is called once per frame

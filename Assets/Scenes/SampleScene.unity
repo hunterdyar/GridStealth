@@ -3381,9 +3381,9 @@ GameObject:
   - component: {fileID: 2039513808}
   - component: {fileID: 2039513807}
   - component: {fileID: 2039513806}
-  - component: {fileID: 2039513805}
   - component: {fileID: 2039513809}
   - component: {fileID: 2039513810}
+  - component: {fileID: 2039513805}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3400,10 +3400,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2039513804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 03dcaa52e38e69c4bbc0fc7490233356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pushable: 1
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
 --- !u!212 &2039513806
 SpriteRenderer:
   m_ObjectHideFlags: 0

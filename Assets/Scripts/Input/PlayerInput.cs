@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
     Agent agent;
     public GameFlowManager gfm;
+    TurnInfo activeTurn = new TurnInfo();
+    public Queue<Vector2Int> inputStack = new Queue<Vector2Int>();
     void Awake()
     {
         agent = GetComponent<Agent>();     
@@ -16,21 +18,25 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         if(!gfm.playerCanMove){return;}
-        TurnInfo moved = new TurnInfo();//this will get replaced if we move
-        moved.turnTaken = false;//never true by default
+        if(activeTurn.blockPlayerMovement){return;}
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            moved = agent.Move(Vector2Int.right);
+            inputStack.Enqueue(Vector2Int.right);
         }else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            moved = agent.Move(Vector2Int.left);
+            inputStack.Enqueue(Vector2Int.left);
         }else if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            moved = agent.Move(Vector2Int.up);
+            inputStack.Enqueue(Vector2Int.up);
         }else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            moved = agent.Move(Vector2Int.down);
+            inputStack.Enqueue(Vector2Int.down);
         }
-        //
+        ///
+        if(!activeTurn.blockPlayerMovement && inputStack.Count > 0)
+        {
+            activeTurn = agent.Move(inputStack.Dequeue());
+            activeTurn.blockPlayerMovement = true;
+        }
     }
 }

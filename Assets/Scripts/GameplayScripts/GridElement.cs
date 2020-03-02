@@ -12,22 +12,13 @@ public class GridElement : MonoBehaviour
     public bool opaque = false;
     [Title("Settings")]
     public int brightness;
-    Vector2Int prevPos;//for update on movement
     public Vector2Int position{get{return GridPosition();}}
     public Action OnNewPositionAction;
     public Vector2Int GridPosition()
     {
         return tilemapManager.WorldToCell(transform.position);
     }
-    void Update()
-    {
-        if(prevPos!=position)
-        {
-            OnNewPosition();
-            
-            prevPos = position;
-        }
-    }
+    void Start(){OnNewPosition();}
     public void OnNewPosition(){
         //tell the previous tileNode and current tileNode if we are solid.
         if(tileNode != null){

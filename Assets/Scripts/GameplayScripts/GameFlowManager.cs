@@ -40,6 +40,7 @@ public class GameFlowManager : ScriptableObject
     }
     IEnumerator AIDoMove()
     {
+        Debug.Log("AI Do Move");
         SortAI();
         List<TurnInfo> playerBlockingTurns = new List<TurnInfo>();
         foreach(AIBase ai in lumpAI)

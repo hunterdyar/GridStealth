@@ -8,7 +8,6 @@ public class Agent : MonoBehaviour
     GridElement gridElement;
     Vector2Int position {get{return gridElement.position;}}
     public bool pushable;
-    public Queue<Vector2Int> moveStack = new Queue<Vector2Int>();
     void Awake()
     {
         gridElement = GetComponent<GridElement>();
@@ -20,27 +19,13 @@ public class Agent : MonoBehaviour
     }
     public TurnInfo Move(Vector2Int dir)
     {
-        moveStack.Enqueue(dir);
-        return DoNextMove();
-    }
-    TurnInfo DoNextMove()
-    {
-        Debug.Log("doing move from movestack l:"+moveStack.Count);
         TurnInfo info = new TurnInfo();
-        if(moveStack.Count == 1){//last item left, lets do it. Otherwise, moves should call each other when they finish.
-            //this is calling the next thing even though it shouldnt be.
-            return DoMove(moveStack.Dequeue(),info);
-        }
-        return info;
-        
+        return DoMove(dir,info);
     }
     protected virtual void MoveEnded()
     {
-        if(moveStack.Count > 0){
-            Debug.Log("a move ended");
-            TurnInfo info = new TurnInfo();
-            DoMove(moveStack.Dequeue(),info);
-        }
+        gridElement.OnNewPosition();
+        Debug.Log("MoveEnded");
     }
 
     public TurnInfo DoMove(Vector2Int dir, TurnInfo info)
@@ -87,7 +72,7 @@ public class Agent : MonoBehaviour
             if(gein.GetComponent<Agent>() != null)
             {
                 Agent neigh = gein.GetComponent<Agent>();
-                if(neigh.pushable){
+                if(neigh.pushable && neigh != this){
                     if(neigh.CanMoveInDir(dir,ref pushing))
                     {
                         pushing.Add(neigh);

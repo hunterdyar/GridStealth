@@ -8,12 +8,6 @@ public class PlayerAgent : Agent
     protected override void MoveEnded()
     {
         base.MoveEnded();
-        if(moveStack.Count == 0)
-        {
-            Debug.Log("player turn ended");
-            gfm.PlayerTookTurn();
-            
-        }
-        
+        gfm.PlayerTookTurn();        
     }
 }

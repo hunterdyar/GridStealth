@@ -9,6 +9,10 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 
     public GridElement gridElement;
 
+    void Awake()
+    {
+        gridElement = GetComponent<GridElement>();
+    }
     public void OnEnable()
     {
         gridElement = GetComponent<GridElement>();

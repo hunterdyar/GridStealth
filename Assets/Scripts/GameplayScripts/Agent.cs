@@ -17,26 +17,37 @@ public class Agent : MonoBehaviour
             gridElement.solid = false;
         }
     }
-    public bool Move(Vector2Int dir)
+    public TurnInfo Move(Vector2Int dir)
     {
+        TurnInfo info = new TurnInfo();
         //tests
         if(dir.magnitude != 1){Debug.LogError("invalid movement for move",gameObject);}
         List<Agent> pushing = new List<Agent>();
         if(CanMoveInDir(dir, ref pushing))
         {
-
-            transform.position = transform.position+new Vector3(dir.x,dir.y,0);
+           
+            info.blockPlayerMovement = true;
+            StartCoroutine(Lerp(transform.position,transform.position+new Vector3(dir.x,dir.y,0),0.33f,info));
             foreach(Agent m in pushing)
             {
                 m.Move(dir);                
             }
             gridElement.OnNewPosition();
-            return true;
-        }else
-        {
-            return false;//didnt move.
+            info.Finish();//set all blocks to false
         }
-
+        return info;
+    }
+    public IEnumerator Lerp(Vector3 start,Vector3 end, float timeToMove, TurnInfo info)
+    {
+        float t = 0;
+        while(t<=timeToMove)
+        {
+            transform.position = Vector3.Lerp(start,end,t);
+            t = t+Time.deltaTime/timeToMove;
+            yield return null;
+        }
+        transform.position = end;
+        info.Finish();
     }
     public bool CanMoveInDir(Vector2Int dir,ref List<Agent> pushing)
     {

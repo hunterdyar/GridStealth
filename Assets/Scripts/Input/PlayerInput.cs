@@ -9,15 +9,15 @@ public class PlayerInput : MonoBehaviour
     public GameFlowManager gfm;
     void Awake()
     {
-        agent = GetComponent<Agent>();
-      
+        agent = GetComponent<Agent>();     
     }
 
     // Update is called once per frame
     void Update()
     {
         if(!gfm.playerCanMove){return;}
-        bool moved = false;
+        TurnInfo moved = new TurnInfo();//this will get replaced if we move
+        moved.turnTaken = false;//never true by default
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             moved = agent.Move(Vector2Int.right);
@@ -32,6 +32,6 @@ public class PlayerInput : MonoBehaviour
             moved = agent.Move(Vector2Int.down);
         }
         //
-        if(moved){gfm.PlayerTookTurn();}
+        if(moved.turnTaken){gfm.PlayerTookTurn();}
     }
 }

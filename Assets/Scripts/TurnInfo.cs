@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurnInfo
 {
+    public bool turnTaken = true;
     public bool turnInMotion = false;
     public bool blockPlayerMovement = false;
     public bool blockAIMovement = false;

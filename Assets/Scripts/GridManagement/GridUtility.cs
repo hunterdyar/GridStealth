@@ -2,11 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GridDirection
+{
+    up,
+    left,
+    right,
+    down
+}
 public class GridUtility 
 {
     public static int ManhattanDistance(Vector2Int a, Vector2Int b)
     {
         return Mathf.Abs(a.x - b.x)+Mathf.Abs(a.y-b.y);
+    }
+    public static Vector2Int DirToV2(GridDirection direction)
+    {
+        if(direction == GridDirection.up)
+        { return Vector2Int.up;}
+        else if(direction == GridDirection.right)
+        { return Vector2Int.right;}
+        else if(direction == GridDirection.left)
+        { return Vector2Int.left;}
+        else{
+            return Vector2Int.down;
+        }
     }
     public static Vector2Int[] SuperCover(Vector2Int a,Vector2Int b)
     {

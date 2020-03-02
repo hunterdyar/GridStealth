@@ -20,7 +20,6 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     }
     public virtual TurnInfo TakeTurn()
     {
-        Debug.Log("taking instant turn, am at pos"+gridElement.position);
         TurnInfo info = new TurnInfo(this);
         info.turnInMotion = false;
         info.blockPlayerMovement = false;
@@ -44,7 +43,8 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
                 //y for x tie, Top to Bottom
                 if(comparePart.gridElement.position.y > gridElement.position.x){return 1;}
                 else if(comparePart.gridElement.position.y < gridElement.position.x){return -1;}
-                else{
+                else
+                {
                     return 0;
                 }
             }

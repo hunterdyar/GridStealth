@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8967e979e5e679c46b167b287f22aea5, type: 3}
   m_Name: GameFlowManager
   m_EditorClassIdentifier: 
+  startingPlayerTurnsAllowed:
+    _useConstant: 1
+    _constantValue: 3
+    _variable: {fileID: 0}
   playerTurnsAllowed:
     _useConstant: 0
     _constantValue: 3
     _variable: {fileID: 11400000, guid: c07ea5b1cf322944da542518df11a2e1, type: 2}
   playerTurnsTaken:
     _useConstant: 1
-    _constantValue: 2
+    _constantValue: 0
     _variable: {fileID: 0}
   enemySubTurnDelay:
     _useConstant: 1
@@ -27,6 +31,6 @@ MonoBehaviour:
   runner: {fileID: 0}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   playerCanMove:
-    _useConstant: 0
-    _constantValue: 0
+    _useConstant: 1
+    _constantValue: 1
     _variable: {fileID: 0}

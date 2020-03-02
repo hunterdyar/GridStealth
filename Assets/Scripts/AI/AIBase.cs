@@ -7,11 +7,12 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 {
     public int turnsCanTake = 1;
     public GameFlowManager gameFlowManager;
-
+    protected Agent agent;
     public GridElement gridElement;
 
     protected void Awake()
     {
+        agent = GetComponent<Agent>();
         gridElement = GetComponent<GridElement>();
         if(turnsCanTake == 0){Debug.LogWarning("AI wont take turn, turnsCanTake set to 0.",gameObject);}
     }

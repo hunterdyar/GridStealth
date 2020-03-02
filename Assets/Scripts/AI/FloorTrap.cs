@@ -1,10 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 public class FloorTrap : AIBase
 {
+    private SpriteRenderer spriteRenderer;
     public GridDirection pushDirection;
+    [FoldoutGroup("Sprites")]
+    public Sprite pushUpSprite;
+    [FoldoutGroup("Sprites")]
+    public Sprite pushDownSprite;
+    [FoldoutGroup("Sprites")]
+    public Sprite pushLeftSprite;
+    [FoldoutGroup("Sprites")]
+    public Sprite pushRightSprite;
+
+    new void Awake()
+    {
+        base.Awake();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        SetupSprite();
+    }
+    void SetupSprite()
+    {
+        if(pushDirection == GridDirection.left)
+        {
+            spriteRenderer.sprite = pushLeftSprite;
+        }else if (pushDirection == GridDirection.right)
+        {
+            spriteRenderer.sprite = pushRightSprite;
+        }else if(pushDirection == GridDirection.up)
+        {
+            spriteRenderer.sprite = pushUpSprite;
+        }else if(pushDirection == GridDirection.down)
+        {
+            spriteRenderer.sprite = pushDownSprite;
+        }
+    }
     public override TurnInfo TakeTurn()
     {
         TurnInfo info = new TurnInfo(this);

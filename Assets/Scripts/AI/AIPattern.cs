@@ -10,7 +10,6 @@ public enum PatternLoopType{
 [RequireComponent(typeof(Agent))]
 public class AIPattern : AIBase
 {
-    Agent agent;
     public int startingIndex = 0;
     public PatternLoopType patternLoopType;
     public List<GridDirection> movementPattern;
@@ -19,7 +18,6 @@ public class AIPattern : AIBase
     new void Awake()
     {
         base.Awake();
-        agent = GetComponent<Agent>();
         currentIndex = startingIndex;
         patternDir = 1;
     }

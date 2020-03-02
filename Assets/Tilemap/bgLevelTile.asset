@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543989414f54ed7459f0a0f1d161b4bb, type: 3}
   m_Name: bgLevelTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -641692423640480795, guid: 32e91c76045ca9f4b9194115cfd43c2d,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c25ee8bbc980014aaf8b815f3dc9d92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

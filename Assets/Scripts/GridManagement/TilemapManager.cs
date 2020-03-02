@@ -10,6 +10,7 @@ public class TilemapManager : ScriptableObject
     public int brightnessScale = 10;
     static Vector2Int[] cardinalDirections = new Vector2Int[]{Vector2Int.up,Vector2Int.right,Vector2Int.down,Vector2Int.left};
     public Tilemap tilemap;
+    public GameObject lightSpriteDitherPrefab;
 
     [Button]
     public void InitiateNodes()
@@ -28,6 +29,9 @@ public class TilemapManager : ScriptableObject
                     node.isSolid = ((LevelTile)tile).solid;
                     node.isOpaque = ((LevelTile)tile).opaque;
                     //Initiate things
+                    LightSpriteDither dither = GameObject.Instantiate(lightSpriteDitherPrefab,tilemap.CellToWorld(p3)+new Vector3(0.5f,0.5f,0),Quaternion.identity,tilemap.transform).GetComponent<LightSpriteDither>();
+                    dither.tileNode = node;
+                    //
                     level.Add(node.position,node);
                     allTileNodes.Add(node);
                 }
@@ -139,7 +143,7 @@ public class TilemapManager : ScriptableObject
                     float b01 = Mathf.Clamp01((float)t.brightness);///(float)brightnessScale
                     // Debug.Log("setting tile "+p3+" to "+b01);
                     Color brightColor = Color.white;//
-                    tilemap.SetColor(p3,Color.Lerp(Color.black,brightColor,b01));
+                    //tilemap.SetColor(p3,Color.Lerp(Color.black,brightColor,b01));
                 // }
             }
         }

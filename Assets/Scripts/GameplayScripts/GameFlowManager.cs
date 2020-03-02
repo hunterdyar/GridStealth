@@ -33,12 +33,24 @@ public class GameFlowManager : ScriptableObject
         //
         playerCanMove = true;
     }
-
+    public void RegisterAI(AIBase ai)
+    {
+        lumpAI.Add(ai);
+    }
+    public void DeRegisterAI(AIBase ai)
+    {
+        if(lumpAI.Contains(ai)){
+            lumpAI.Remove(ai);
+        }
+    }
+    [Button("sort AI")]
     void SortAI()
     {
         lumpAI.Sort(delegate(AIBase a,AIBase b){
             return GridUtility.CompareV2ByTopLeft(a.gridElement.position,b.gridElement.position);
         });
+
+        Debug.Log("sorted");
     }
     //
 

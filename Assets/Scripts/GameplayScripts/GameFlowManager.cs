@@ -15,6 +15,7 @@ public class GameFlowManager : ScriptableObject
     public void SetSingleton(){instance = this;}
     public void Init()
     {
+        lumpAI = new List<AIBase>();
         playerCanMove = true;
     }
     public void PlayerTookTurn()

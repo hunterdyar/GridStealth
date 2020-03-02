@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f89b1ed37208e448d176d98ca5649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnsCanTake: 3
   gameFlowManager: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridElement: {fileID: 5871136135032033731}
   startingIndex: 0

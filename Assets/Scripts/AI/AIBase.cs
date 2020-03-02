@@ -5,6 +5,7 @@ using System;
 [RequireComponent(typeof(GridElement))]
 public class AIBase : MonoBehaviour, IComparable<AIBase>
 {
+    public int turnsCanTake = 1;
     public GameFlowManager gameFlowManager;
 
     public GridElement gridElement;
@@ -12,6 +13,7 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     protected void Awake()
     {
         gridElement = GetComponent<GridElement>();
+        if(turnsCanTake == 0){Debug.LogWarning("AI wont take turn, turnsCanTake set to 0.",gameObject);}
     }
     public void OnEnable()
     {

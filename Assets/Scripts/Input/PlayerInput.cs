@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!gfm.playerCanMove){return;}
+        if(!gfm.playerCanMove.Value){return;}
         if(activeTurn.blockPlayerMovement){return;}
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {

@@ -7,7 +7,8 @@ public enum GridDirection
     up,
     left,
     right,
-    down
+    down,
+    none
 }
 public class GridUtility 
 {
@@ -23,8 +24,10 @@ public class GridUtility
         { return Vector2Int.right;}
         else if(direction == GridDirection.left)
         { return Vector2Int.left;}
-        else{
+        else if(direction == GridDirection.down){
             return Vector2Int.down;
+        }else{
+            return Vector2Int.zero;
         }
     }
     public static Vector2Int[] SuperCover(Vector2Int a,Vector2Int b)

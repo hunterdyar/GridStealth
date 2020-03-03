@@ -9,6 +9,7 @@ public class GridLight : MonoBehaviour
     GridElement gridElement;
     public AnimationCurve lightFalloffCurve;
     public GameFlowManager gfm;
+    public bool enalbled = true;
     public int lightRange;
     [Button("Assign gridElement")]
     void Awake()
@@ -27,6 +28,7 @@ public class GridLight : MonoBehaviour
     [Button("Illuminate")]
     void Illuminate()
     {
+        if(!enabled){return;}
         //remove self from all levelNodes.
         foreach(TileNode t in gridElement.tilemapManager.allTileNodes)
         {

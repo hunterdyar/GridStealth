@@ -10,7 +10,6 @@ public class AIPatrolAB : AIBase
     Vector2Int a;
     Vector2Int b;
     Vector2Int mostRecent;
-    Agent agent;
     new void Awake()
     {
         base.Awake();

@@ -17,12 +17,11 @@ public class GameFlowManager : ScriptableObject
     public TilemapManager tilemapManager;
     public Action PostGridElementsUpdatedAction;
     public BoolReference playerCanMove;//waiting for player input.
-    List<AIBase> lumpAI;
+    List<AIBase> lumpAI = new List<AIBase>();
     [Button("Set Singleton")]
     public void SetSingleton(){instance = this;}
     public void Init()
     {
-        lumpAI = new List<AIBase>();
         playerCanMove.Value = true;
         playerTurnsTaken.Value = 0;
         playerTurnsAllowed.Value = startingPlayerTurnsAllowed.Value;

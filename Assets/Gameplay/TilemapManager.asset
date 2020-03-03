@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d08e75f4dd4af44c926bf717307f2a2, type: 3}
   m_Name: TilemapManager
   m_EditorClassIdentifier: 
+  darkColor:
+    _useConstant: 0
+    _constantValue: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 11400000, guid: 3cd26d15ac0627a4eb7b838d134b2275, type: 2}
+  lightColor:
+    _useConstant: 0
+    _constantValue: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 11400000, guid: d1ab1fea8eb04d2428b98bcbdf4f412f, type: 2}
   brightnessScale: 10
   tilemap: {fileID: 0}
   lightSpriteDitherPrefab: {fileID: 1470961655017294427, guid: f24415a9bd3f57347a82fc7716895ac5,

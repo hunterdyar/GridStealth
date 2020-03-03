@@ -34,6 +34,7 @@ public class TilemapManager : ScriptableObject
                     //Initiate things
                     LightSpriteDither dither = GameObject.Instantiate(lightSpriteDitherPrefab,tilemap.CellToWorld(p3)+new Vector3(0.5f,0.5f,0),Quaternion.identity,tilemap.transform).GetComponent<LightSpriteDither>();
                     dither.tileNode = node;
+                    node.dither = dither;//yeah its an interdependency but idk, what do you want from me.
                     //
                     level.Add(node.position,node);
                     allTileNodes.Add(node);
@@ -154,7 +155,20 @@ public class TilemapManager : ScriptableObject
         }
     }
 
-
+    public void Blink(Vector2Int center,int manhattanRadius, int color)//0 is dark 1 is light.
+    {
+        Vector2Int[] c = GridUtility.Circle(center,manhattanRadius);
+        foreach(Vector2Int p in c)
+        {
+            if(GridUtility.ManhattanDistance(p,center) <= manhattanRadius){//circle algorithm isnt manhattan algorith, its bresenham. so we trim.
+                TileNode tn = GetTileNode(p);
+                if(tn!=null)
+                {
+                    tn.dither.Blink(color);
+                }
+            }
+        }
+    }
     //See superCover
     public bool LineOfSight(TileNode a,TileNode b)
     {

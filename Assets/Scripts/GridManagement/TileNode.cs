@@ -15,6 +15,7 @@ public class TileNode
     public List<GridElement> itemsHere = new List<GridElement>();
     //lights that illuminate this node.
     public List<GridLight> lightsOnMe = new List<GridLight>();
+    public LightSpriteDither dither;
 
     public void SetBrightness()
     {

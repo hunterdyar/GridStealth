@@ -98,6 +98,10 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {r: 0, g: 0, b: 0, a: 0}
     _variable: {fileID: 11400000, guid: 3cd26d15ac0627a4eb7b838d134b2275, type: 2}
+  lightColor:
+    _useConstant: 0
+    _constantValue: {r: 0, g: 0, b: 0, a: 0}
+    _variable: {fileID: 11400000, guid: d1ab1fea8eb04d2428b98bcbdf4f412f, type: 2}
   ditherPatterns:
   - {fileID: 21300000, guid: 37ccb33c9ae5cc04ea52abf865c632dc, type: 3}
   - {fileID: 21300000, guid: 8ef268b3ee003114286b0ea64127e2b5, type: 3}

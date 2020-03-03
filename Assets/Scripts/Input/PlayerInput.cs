@@ -34,6 +34,10 @@ public class PlayerInput : MonoBehaviour
         {
             inputStack.Enqueue(Vector2Int.down);
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            tilemapManager.Blink(agent.position,3,1);
+        }
         ///mouse Input
         if(Input.GetMouseButtonDown(0))
         {

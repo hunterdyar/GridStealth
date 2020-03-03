@@ -14,11 +14,16 @@ public class GridElement : MonoBehaviour
     public int brightness;
     public Vector2Int position{get{return GridPosition();}}
     public Action OnNewPositionAction;
+    public Action<Vector2Int> SoundFromAction;
     public Vector2Int GridPosition()
     {
         return tilemapManager.WorldToCell(transform.position);
     }
     void Start(){OnNewPosition();}
+    public void SoundFrom(Vector2Int source)
+    {
+        SoundFromAction?.Invoke(source);
+    }
     public void OnNewPosition(){
         //tell the previous tileNode and current tileNode if we are solid.
         if(tileNode != null){

@@ -25,6 +25,13 @@ public class TileNode
             brightness += l.BrightnessForTile(position);
         }
     }
+    public void SoundFrom(Vector2Int source)
+    {
+        foreach(GridElement item in itemsHere)
+        {
+            item.SoundFrom(source);
+        }
+    }
     public bool IsSolid(){
         if(isSolid){return true;}//assignedSolid overrides any elements that are ( but shouldnt be?) here
         if(itemsHere.Count>0)

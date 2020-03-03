@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            tilemapManager.Blink(agent.position,3,1);
+            tilemapManager.Sound(agent.position,3);
         }
         ///mouse Input
         if(Input.GetMouseButtonDown(0))

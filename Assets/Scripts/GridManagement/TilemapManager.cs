@@ -155,7 +155,7 @@ public class TilemapManager : ScriptableObject
         }
     }
 
-    public void Blink(Vector2Int center,int manhattanRadius, int color)//0 is dark 1 is light.
+    public void Sound(Vector2Int center,int manhattanRadius)//0 is dark 1 is light.
     {
         Vector2Int[] c = GridUtility.Circle(center,manhattanRadius);
         foreach(Vector2Int p in c)
@@ -164,7 +164,8 @@ public class TilemapManager : ScriptableObject
                 TileNode tn = GetTileNode(p);
                 if(tn!=null)
                 {
-                    tn.dither.Blink(color);
+                    tn.SoundFrom(center);
+                    tn.dither.Blink(1);
                 }
             }
         }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Agent : MonoBehaviour
 {
     GridElement gridElement;
-    Vector2Int position {get{return gridElement.position;}}
+    public Vector2Int position {get{return gridElement.position;}}
     public bool pushable;
     void Awake()
     {

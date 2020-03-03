@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Agent))]
 public class PlayerInput : MonoBehaviour
 {
+    public TilemapManager tilemapManager;
     Agent agent;
     public GameFlowManager gfm;
     TurnInfo activeTurn = new TurnInfo();
@@ -19,6 +20,7 @@ public class PlayerInput : MonoBehaviour
     {
         if(!gfm.playerCanMove.Value){return;}
         if(activeTurn.blockPlayerMovement){return;}
+        //keyboard Input
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             inputStack.Enqueue(Vector2Int.right);
@@ -32,6 +34,33 @@ public class PlayerInput : MonoBehaviour
         {
             inputStack.Enqueue(Vector2Int.down);
         }
+        ///mouse Input
+        if(Input.GetMouseButtonDown(0))
+        {
+            //if input for movement...
+            Vector2Int clickPos = tilemapManager.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            
+            if(agent.position == clickPos){return;}//if we clicked ON the player. This how we show menu?
+            if(agent.position.x == clickPos.x)
+            {
+                if(agent.position.y < clickPos.y)
+                {
+                    inputStack.Enqueue(Vector2Int.up);
+                }else
+                {
+                    inputStack.Enqueue(Vector2Int.down);
+                }
+            }else if(agent.position.y == clickPos.y)
+            {
+                if(agent.position.x < clickPos.x)
+                {
+                    inputStack.Enqueue(Vector2Int.right);
+                }else
+                {
+                    inputStack.Enqueue(Vector2Int.left);
+                }
+            }
+        }//end mouse movement
         ///
         if(!activeTurn.blockPlayerMovement && inputStack.Count > 0)
         {

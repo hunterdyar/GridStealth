@@ -896,7 +896,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1067,7 +1067,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1238,7 +1238,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1409,7 +1409,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1625,7 +1625,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1814,7 +1814,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2552,11 +2552,10 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 6
-    m_Data: {fileID: -5680660409973874991, guid: 32e91c76045ca9f4b9194115cfd43c2d,
-      type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 6
+    m_Data: {fileID: 21300000, guid: f288fd3ffcedb344183a31549debdeab, type: 3}
   - m_RefCount: 203
     m_Data: {fileID: 21300000, guid: 5c25ee8bbc980014aaf8b815f3dc9d92, type: 3}
   m_TileMatrixArray:
@@ -2722,7 +2721,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1724731406
@@ -2942,6 +2941,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd09429a4f9b9224882f754340f6d604, type: 3}
+--- !u!1001 &6473851763647348403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1470961655017294427, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_Name
+      value: Dither
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951404796096916764, guid: f24415a9bd3f57347a82fc7716895ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f24415a9bd3f57347a82fc7716895ac5, type: 3}
 --- !u!1001 &7179416343040610371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2953,22 +3021,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8393653677960952277, guid: 11d0b540e765be7448aa01cc6d6e0c65,
+      objectReference: {fileID: 21300000, guid: e5c9938add3cd1644b90850d8735503a,
         type: 3}
     - target: {fileID: 7179416343417016973, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.26788893
       objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016973, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.58729744
       objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016973, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.8113208
       objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016975, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brightnessScale: 10
   tilemap: {fileID: 0}
+  lightSpriteDitherPrefab: {fileID: 1470961655017294427, guid: f24415a9bd3f57347a82fc7716895ac5,
+    type: 3}

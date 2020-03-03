@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 59b82a6b5537fca478605191d0d17784, type: 3}
-  m_Color: {r: 0.13722102, g: 0.754717, b: 0.07831969, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 58f5e63dc2a7d3245a00e829da0652ef, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,11 +115,7 @@ MonoBehaviour:
   gameFlowManager: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridElement: {fileID: 7638234731067736998}
   pushDirection: 2
-  pushUpSprite: {fileID: -2429919002490121231, guid: b7547bf725c576743adb3d2624884568,
-    type: 3}
-  pushDownSprite: {fileID: 67926103340967526, guid: b7547bf725c576743adb3d2624884568,
-    type: 3}
-  pushLeftSprite: {fileID: -2938970880757876879, guid: b7547bf725c576743adb3d2624884568,
-    type: 3}
-  pushRightSprite: {fileID: 5635105361348811957, guid: b7547bf725c576743adb3d2624884568,
-    type: 3}
+  pushUpSprite: {fileID: 21300000, guid: 33aae856cbddcea4b90a7be1b818609a, type: 3}
+  pushDownSprite: {fileID: 21300000, guid: a5ea01cac35ac32429674d4f57fe2852, type: 3}
+  pushLeftSprite: {fileID: 21300000, guid: da50629690af7db4abfe064cd87c8858, type: 3}
+  pushRightSprite: {fileID: 21300000, guid: 58f5e63dc2a7d3245a00e829da0652ef, type: 3}

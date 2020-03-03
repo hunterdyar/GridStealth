@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Sirenix.OdinInspector;
+using ScriptableObjectArchitecture;
 public class TilemapManager : ScriptableObject
 {
+    public ColorReference darkColor;
+    public ColorReference lightColor;
     public Dictionary<Vector2Int,TileNode> level = new Dictionary<Vector2Int,TileNode>();
     public List<TileNode> allTileNodes = new List<TileNode>();
     public int brightnessScale = 10;
@@ -34,6 +37,10 @@ public class TilemapManager : ScriptableObject
                     //
                     level.Add(node.position,node);
                     allTileNodes.Add(node);
+                    //tilemap color settings
+                    //flags should be none
+                    tilemap.SetTileFlags(p3, TileFlags.None);
+                    tilemap.SetColor(p3,darkColor.Value);
                 }
             }
         }
@@ -135,9 +142,7 @@ public class TilemapManager : ScriptableObject
         {
             if(HasLevelTile((Vector2Int)p3) && p3.z == 0)
             {
-                //flags should be none
-                tilemap.SetTileFlags(p3, TileFlags.None);
-                //cool
+                                //cool
                 TileNode t = GetTileNode((Vector2Int)p3);
                 // if(!t.solid){
                     float b01 = Mathf.Clamp01((float)t.brightness);///(float)brightnessScale

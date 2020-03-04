@@ -98,7 +98,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5871136135032033757
@@ -113,6 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElement: {fileID: 0}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  destination: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
   pushable: 1
 --- !u!114 &5871136135032033756
 MonoBehaviour:

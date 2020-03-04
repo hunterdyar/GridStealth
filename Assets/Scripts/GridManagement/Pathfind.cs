@@ -53,7 +53,7 @@ public class Pathfind
         distances[start] = 0;
         int iterations = 0;
         //
-        Debug.Log("pathfinding...");
+       // Debug.Log("pathfinding...");
         while(frontier.Count > 0)
         {
             TileNode current = frontier.Dequeue();

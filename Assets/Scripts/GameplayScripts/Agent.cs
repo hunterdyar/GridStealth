@@ -15,6 +15,7 @@ public class Agent : MonoBehaviour
     public Vector2Int facingDirection;
     public Action atDestinationAction;
     public bool pushable;
+    public bool atDestination{get{return destination == position;}}
     Coroutine ambientPathfinding;
     void Awake()
     {
@@ -36,6 +37,10 @@ public class Agent : MonoBehaviour
             atDestinationAction?.Invoke();
         }
         Vector2Int next = pathToDestination.Dequeue();
+        if(next == position)//get rid of first item, which is ... already where we are.
+        {
+            next = pathToDestination.Dequeue();
+        }
         Vector2Int dir = next-position;
         return Move(dir);
     }

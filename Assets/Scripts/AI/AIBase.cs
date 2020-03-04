@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
-public enum AIState{
-    frozen,
-    normal,
-    confused,
-    investigate
-}
+using BehaviorDesigner.Runtime;
 [RequireComponent(typeof(GridElement))]
 public class AIBase : MonoBehaviour, IComparable<AIBase>
 {
@@ -16,12 +10,18 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     public GameFlowManager gameFlowManager;
     protected Agent agent;
     public GridElement gridElement;
-    public AIState state;
+    BehaviorTree tree;
     protected void Awake()
     {
+        tree = GetComponent<BehaviorTree>();
         agent = GetComponent<Agent>();
         gridElement = GetComponent<GridElement>();
         if(turnsCanTake == 0){Debug.LogWarning("AI wont take turn, turnsCanTake set to 0.",gameObject);}
+    }
+    void Start()
+    {
+        SharedAgent agentVar = (SharedAgent)tree.GetVariable("agent");
+        agentVar.Value = agent;
     }
     public void OnEnable()
     {
@@ -34,6 +34,13 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     }
     public virtual TurnInfo TakeTurn()
     {
+        if(tree!=null)
+        {
+            SharedInt turnsCanTakeVar = (SharedInt)tree.GetVariable("turnsCanTake");
+            turnsCanTakeVar.Value = turnsCanTake;
+            
+            BehaviorManager.instance.Tick();
+        }
         TurnInfo info = new TurnInfo(this);
         info.turnInMotion = false;
         info.blockPlayerMovement = false;

@@ -16,6 +16,7 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     public GameFlowManager gameFlowManager;
     protected Agent agent;
     public GridElement gridElement;
+    public AIState state;
     protected void Awake()
     {
         agent = GetComponent<Agent>();
@@ -36,6 +37,7 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
         TurnInfo info = new TurnInfo(this);
         info.turnInMotion = false;
         info.blockPlayerMovement = false;
+        info.turnTaken = false;
         return info;
     }
 

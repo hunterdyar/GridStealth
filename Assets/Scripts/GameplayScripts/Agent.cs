@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(GridElement))]
 public class Agent : MonoBehaviour
 {
-    GridElement gridElement;
+    [HideInInspector]
+    public GridElement gridElement;
     public Vector2Int position {get{return gridElement.position;}}
+    public Vector2Int facingDirection;
     public bool pushable;
     void Awake()
     {
@@ -37,6 +39,7 @@ public class Agent : MonoBehaviour
            
             info.blockPlayerMovement = true;
             info.endOfMoveAction += MoveEnded;
+            facingDirection = dir;
             StartCoroutine(Lerp(transform.position,transform.position+new Vector3(dir.x,dir.y,0),0.33f, info));
             foreach(Agent m in pushing)
             {

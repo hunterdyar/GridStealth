@@ -16,6 +16,7 @@ public class GameFlowManager : ScriptableObject
     public static GameFlowManager instance;
     public TilemapManager tilemapManager;
     public Action PostGridElementsUpdatedAction;
+    public Action PlayerInNewLocationAction;//fires before enemies move.
     public BoolReference playerCanMove;//waiting for player input.
     List<AIBase> lumpAI = new List<AIBase>();
     [Button("Set Singleton")]
@@ -34,7 +35,7 @@ public class GameFlowManager : ScriptableObject
             return;//not the AI turn yet.
         }
         playerCanMove.Value = false;
-
+        PlayerInNewLocationAction?.Invoke();
         //AIAgents to take their turn
         playerTurnsTaken.Value = 0;
         StartAITurn(1);

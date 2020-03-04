@@ -191,6 +191,60 @@ public class GridUtility
         }
         return c.ToArray();
     }
+    public static Vector2Int[] CircleManhattan(Vector2Int center, int radius)
+    {
+        
+        
+        int x = center.x;
+        int y = center.y;
+
+        List<Vector2Int> c = new List<Vector2Int>();
+        int r = radius;    
+        int r2 = r * r;
+        int area = r2 << 2;
+        int rr = r << 1;
+
+        for (int i = 0; i < area; i++)
+        {
+            int tx = (i % rr) - r;
+            int ty = (i / rr) - r;
+
+            if (tx * tx + ty * ty <= r2)
+            {
+                if(ManhattanDistance(center,new Vector2Int(x+tx,y+ty))<=radius){
+                    c.Add(new Vector2Int(x+tx,y+ty));
+                }
+            }
+
+        }
+        return c.ToArray();
+    }
+    public static int Quadrant(Vector2Int a)
+    {
+        //1-4, counter clockwise from (1,1) quadrant.
+        if (a == Vector2Int.zero){return 0;}
+        if(a.x>0)
+        {
+            if(a.y>0)
+            {
+                return 1;
+            }else
+            {
+                return 4;
+            }
+        }else{
+            if(a.y>0)
+            {
+                return 2;
+            }else{
+                return 3;
+            }
+        }  
+    }
+    // public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius){
+     
+    //     return arci.ToArray();
+    // }
     public static int CompareV2ByTopLeft(Vector2Int a, Vector2Int b)
     {
         if (a == null)

@@ -136,6 +136,23 @@ public class TilemapManager : ScriptableObject
         }
         return neighbors.ToArray();
     }
+    //neighbors that arent solid.
+    public TileNode[] GetConnectionsTo(TileNode gridItem)
+    {
+        List<TileNode> neighbors = new List<TileNode>();
+        foreach(Vector2Int dir in cardinalDirections)
+        {
+            TileNode n = GetTileNode(gridItem.position+dir);
+            if(n!=null)
+            {
+                if(!n.solid){
+                    neighbors.Add(n);
+                }
+            }
+        }
+        return neighbors.ToArray();
+    }
+
 
     public void UpdateBrightnessDisplay()
     {

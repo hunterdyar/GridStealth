@@ -2,26 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
+[TaskCategory("Grid System")]
 public class WithinSight : Conditional
 {
     public GridElement myGridElement;
     public Agent agent;
     public int distance;
     public float fieldOfViewAngle;
-    public SharedGridElement target;
+    public SharedGridElement targetGE;
+    public SharedAgent targetAgent;
+    public Vector2Int targetPosition;
 
     public override TaskStatus OnUpdate()
     {
-            if (WithinViewCone(target.Value, fieldOfViewAngle)) {
-                return TaskStatus.Success;
-            }
+        Vector2Int target = targetPosition;
+        if(targetGE.Value != null)
+        {
+            target = targetGE.Value.position;
+        }
+        if(targetAgent.Value != null)
+        {
+            target = targetAgent.Value.position;
+        }
+
+        if (WithinViewCone(target, fieldOfViewAngle)) {
+            return TaskStatus.Success;
+        }
         
         return TaskStatus.Failure;
     }
-    public bool WithinViewCone(GridElement target, float fieldOfViewAngle)
+    public bool WithinViewCone(Vector2Int target, float fieldOfViewAngle)
     {
-        Vector2Int direction = target.position - myGridElement.position;
-        if(direction.magnitude > distance){return false;}
-        return Vector2.Angle((Vector2)direction, (Vector2)agent.facingDirection) < fieldOfViewAngle;
+        Vector2Int direction = target - myGridElement.position;
+        if(GridUtility.ManhattanDistance(target,myGridElement.position) > distance){return false;}
+        return Vector2.Angle((Vector2)direction, (Vector2)agent.facingDirection) <= fieldOfViewAngle;
     }
 }

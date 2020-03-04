@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+[TaskCategory("Grid System")]
 public class MoveTowards : Action
 {
     public SharedVector2Int destination;

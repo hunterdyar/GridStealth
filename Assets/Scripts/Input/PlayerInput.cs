@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Agent))]
 public class PlayerInput : MonoBehaviour
 {
-    public TilemapManager tilemapManager;
+    TilemapManager tilemapManager;
     Agent agent;
     public GameFlowManager gfm;
     TurnInfo activeTurn = new TurnInfo();
@@ -13,17 +13,18 @@ public class PlayerInput : MonoBehaviour
     Coroutine ambientPathfinding;
     void Awake()
     {
+        tilemapManager = gfm.tilemapManager;
         pathfind = new Pathfind();
         pathfind.tilemapManager = tilemapManager;
         agent = GetComponent<Agent>();     
     }
     void OnEnable()
     {
-        gfm.PlayerInNewLocationAction += CachePathfind;
+        gfm.PlayerInNewLocationAction += agent.CachePathfind;
     }
     void OnDisable()
     {
-        gfm.PlayerInNewLocationAction -= CachePathfind;
+        gfm.PlayerInNewLocationAction -= agent.CachePathfind;
     }
     // Update is called once per frame
     void Update()
@@ -56,8 +57,7 @@ public class PlayerInput : MonoBehaviour
             TileNode clickNode = tilemapManager.GetTileNode(clickPos);
             if(clickNode == null){return;}
 
-            StartCoroutine(WaitForPathThenMove(clickNode));
-
+            StartCoroutine(WaitAndQueuePath(clickNode.position));
         }
         ///
         if(Input.GetMouseButtonDown(0))
@@ -105,37 +105,36 @@ public class PlayerInput : MonoBehaviour
         //         tilemapManager.Sound(v,1);
         //     }
         // }
-    }
-    IEnumerator WaitForPathThenMove(TileNode clickNode)
-    {
-        pathfind.Search(agent.gridElement.tileNode,clickNode,this);
 
-        bool pathFailed = false;
-        while(pathfind.pathStatus != 1){
-            if(pathfind.pathStatus == -1){
-                pathFailed = true;
+    }
+    IEnumerator WaitAndQueuePath(Vector2Int destination)
+    {
+        bool pathfailed = false;
+        Pathfind finder = agent.SetDestination(destination);
+        while(finder.pathStatus != 1)
+        {
+            if(finder.pathStatus == -1)
+            {
+                pathfailed = true;
                 break;
             }
             yield return null;
         }
-        if(!pathFailed){//do nothing if the path failed to be found
-            if(pathfind.path != null){//sanity check on failed path
-                if(pathfind.distances[clickNode] <= gfm.playerTurnsAllowed.Value - gfm.playerTurnsTaken.Value){//too far away to move during this turn
-                    for(int i = 1;i<pathfind.path.Count;i++)
-                    {
-                        inputStack.Enqueue(pathfind.path[i].position-pathfind.path[i-1].position);
-                    }
+        if(!pathfailed){
+            while(agent.pathToDestination.Count<0)
+            {
+                yield return null;
+            }
+            int steps = Mathf.Min(gfm.playerTurnsAllowed.Value-gfm.playerTurnsTaken.Value,agent.pathToDestination.Count-1);//-1 is because first item in the queue should be current location, I think.
+            Vector2Int current = agent.position;
+            for(int i = 0;i<steps+1;i++)
+            {
+                Vector2Int next = agent.pathToDestination.Dequeue();
+                if(current != next){
+                    inputStack.Enqueue(next-current);
+                    current = next;
                 }
             }
         }
-    }
-    
-    void CachePathfind()
-    {
-        if(pathfind.running)
-        {
-            StopCoroutine(ambientPathfinding);
-        }
-        ambientPathfinding = StartCoroutine(pathfind.FindAllPaths(agent.gridElement.tileNode,10));
     }
 }

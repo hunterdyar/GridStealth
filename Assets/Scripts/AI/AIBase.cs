@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+public enum AIState{
+    frozen,
+    normal,
+    confused,
+    investigate
+}
 [RequireComponent(typeof(GridElement))]
 public class AIBase : MonoBehaviour, IComparable<AIBase>
 {
@@ -9,7 +16,6 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     public GameFlowManager gameFlowManager;
     protected Agent agent;
     public GridElement gridElement;
-
     protected void Awake()
     {
         agent = GetComponent<Agent>();

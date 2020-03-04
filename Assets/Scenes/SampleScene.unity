@@ -3209,6 +3209,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[0].time
+      value: -0.0008049011
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[0].value
+      value: 0.17204285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[1].time
+      value: 1.0008545
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[1].value
+      value: 0.17266846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightFalloffCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016979, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_LocalPosition.x

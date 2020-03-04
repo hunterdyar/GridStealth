@@ -381,6 +381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElement: {fileID: 0}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  destination: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
   pushable: 1
 --- !u!1 &711697169 stripped
 GameObject:
@@ -721,6 +725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElement: {fileID: 0}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  destination: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
   pushable: 1
 --- !u!1 &1564619669
 GameObject:
@@ -2932,6 +2940,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElement: {fileID: 0}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  destination: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
   pushable: 1
 --- !u!1 &1872781777
 GameObject:
@@ -3092,6 +3104,12 @@ PrefabInstance:
       propertyPath: opaque
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5871136135032033757, guid: 1133a1b7963f4b44d90ae1ee1e7a8cad,
+        type: 3}
+      propertyPath: tilemapManager
+      value: 
+      objectReference: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f,
+        type: 2}
     - target: {fileID: 5871136135032033759, guid: 1133a1b7963f4b44d90ae1ee1e7a8cad,
         type: 3}
       propertyPath: m_Name
@@ -3180,6 +3198,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7179416343417016974, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: tilemapManager
+      value: 
+      objectReference: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f,
+        type: 2}
     - target: {fileID: 7179416343417016975, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Name

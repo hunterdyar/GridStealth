@@ -91,7 +91,9 @@ public class PlayerInput : MonoBehaviour
         if(!activeTurn.blockPlayerMovement && inputStack.Count > 0)
         {
             activeTurn = agent.Move(inputStack.Dequeue());
-            activeTurn.blockPlayerMovement = true;
+            if(activeTurn.turnTaken){
+                activeTurn.blockPlayerMovement = true;
+            }
         }
 
 

@@ -71,6 +71,8 @@ public class Agent : MonoBehaviour
                 m.Move(dir,false);//dont use the move of an agent that gets pushed.                
             }
             gridElement.OnNewPosition();
+        }else{
+            info.turnTaken = false;
         }
         return info;
     }

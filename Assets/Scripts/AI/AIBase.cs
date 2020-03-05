@@ -20,8 +20,13 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
     }
     void Start()
     {
-        SharedAgent agentVar = (SharedAgent)tree.GetVariable("agent");
-        agentVar.Value = agent;
+        //Update Behavior Tree Variables
+        SharedAgent myAgentVar = (SharedAgent)tree.GetVariable("myAgent");
+        myAgentVar.Value = agent;
+        SharedGridElement myGridElement = (SharedGridElement)tree.GetVariable("myGridElement");
+        myGridElement.Value = gridElement;
+        SharedFOV myFOV = (SharedFOV)tree.GetVariable("myFOV");
+        myFOV.Value = GetComponent<FOV>();
     }
     public void OnEnable()
     {

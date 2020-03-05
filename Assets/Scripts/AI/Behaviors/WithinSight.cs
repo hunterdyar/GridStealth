@@ -15,6 +15,10 @@ public class WithinSight : Conditional
     public override TaskStatus OnUpdate()
     {
         //"just in time" updating, instead of subscribing the FOV to actions.
+        if(myFieldOfView.Value == null)
+        {
+            Debug.LogError("WithinSight behavior conditional needs a FOV");
+        }
         myFieldOfView.Value.CheckSight();
         //
         if(targetAgent.Value != null)
@@ -25,8 +29,7 @@ public class WithinSight : Conditional
            }else{
                return TaskStatus.Failure;
            }
-        }
-        
+        } 
         if(targetGE.Value != null)
         {
             if(ItemWithinViewCone(targetGE.Value))
@@ -36,12 +39,9 @@ public class WithinSight : Conditional
                return TaskStatus.Failure;
            }
         }
-        
-
         if (PositionWithinViewCone(targetPosition)) {
             return TaskStatus.Success;
         }
-        
         return TaskStatus.Failure;
     }
     public bool ItemWithinViewCone(GridElement item)

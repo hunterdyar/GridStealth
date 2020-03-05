@@ -27,6 +27,9 @@ public class Agent : MonoBehaviour
             Debug.LogWarning("Agent is pushable but gridElement is set to solid. overriding gridElement solid to false");
             gridElement.solid = false;
         }
+    }
+    void Start()
+    {
         destination = position;
     }
     //moves in a dir out of the movement stack

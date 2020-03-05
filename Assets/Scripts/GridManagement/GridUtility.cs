@@ -241,7 +241,7 @@ public class GridUtility
             }
         }  
     }
-    public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius,float fieldOfViewAngle){
+    public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius,float fieldOfViewAngle,bool includeCenter=true){
         List<Vector2Int> arci = new List<Vector2Int>();
         //doing this has no effect but i like to think it prevents floating point rounding errors by avoiding equality between floats
         fieldOfViewAngle = fieldOfViewAngle + 1;
@@ -271,6 +271,11 @@ public class GridUtility
                 }
             }
         }
+        if(includeCenter)
+        {
+            arci.Add(center);
+        }
+        
         return arci.ToArray();
     }
 public static Vector2Int[] CardinalArc(Vector2Int center, Vector2Int dir, int radius, Vector2Int fovDir){

@@ -5,37 +5,55 @@ using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("Grid System")]
 public class WithinSight : Conditional
 {
-    public GridElement myGridElement;
-    public Agent agent;
-    public int distance;
-    public float fieldOfViewAngle;
-    public SharedGridElement targetGE;
+    public SharedFOV myFieldOfView;
     public SharedAgent targetAgent;
+    public SharedGridElement targetGE;
     public Vector2Int targetPosition;
 
+
+    //priority is decending order of specicifity. agent>gridelement>position
     public override TaskStatus OnUpdate()
     {
-        Vector2Int target = targetPosition;
-        if(targetGE.Value != null)
-        {
-            target = targetGE.Value.position;
-        }
+        //"just in time" updating, instead of subscribing the FOV to actions.
+        myFieldOfView.Value.CheckSight();
+        //
         if(targetAgent.Value != null)
         {
-            target = targetAgent.Value.position;
+           if(AgentWithinViewCone(targetAgent.Value))
+           {
+               return TaskStatus.Success;
+           }else{
+               return TaskStatus.Failure;
+           }
         }
+        
+        if(targetGE.Value != null)
+        {
+            if(ItemWithinViewCone(targetGE.Value))
+           {
+               return TaskStatus.Success;
+           }else{
+               return TaskStatus.Failure;
+           }
+        }
+        
 
-        if (WithinViewCone(target, fieldOfViewAngle)) {
+        if (PositionWithinViewCone(targetPosition)) {
             return TaskStatus.Success;
         }
         
         return TaskStatus.Failure;
     }
-    public bool WithinViewCone(Vector2Int target, float fieldOfViewAngle)
+    public bool ItemWithinViewCone(GridElement item)
     {
-        Vector2Int direction = target - myGridElement.position;
-        fieldOfViewAngle = fieldOfViewAngle/2;
-        if(GridUtility.ManhattanDistance(target,myGridElement.position) > distance){return false;}
-        return Vector2.Angle((Vector2)direction, (Vector2)agent.facingDirection) <= fieldOfViewAngle;
+        return (myFieldOfView.Value.itemsISee.Contains(item));
+    }
+    public bool PositionWithinViewCone(Vector2Int pos)
+    {
+        return myFieldOfView.Value.placesISee.Contains(pos);
+    }
+    public bool AgentWithinViewCone(Agent agent)
+    {
+        return myFieldOfView.Value.agentsISee.Contains(agent);
     }
 }

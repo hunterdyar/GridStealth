@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+public enum GridLightType{
+    circle,
+    arc
+}
+
 [RequireComponent(typeof(GridElement))]
 public class GridLight : MonoBehaviour
 {
     Vector2Int position {get{return gridElement.position;}}
     GridElement gridElement;
+    Agent agent;
     public AnimationCurve lightFalloffCurve;
     public GameFlowManager gfm;
-    public bool enalbled = true;
+    public GridLightType gridLightType;
     public int lightRange;
     [Button("Assign gridElement")]
     void Awake()
     {
         gridElement = GetComponent<GridElement>();
+        agent = GetComponent<Agent>();
         gridElement.OnNewPositionAction += Illuminate;
     }
     void OnEnable()
@@ -37,8 +44,13 @@ public class GridLight : MonoBehaviour
                 t.SetBrightness();
             }
         }
-
-        Vector2Int[] c = GridUtility.Circle(position,lightRange);
+        Vector2Int[] c = new Vector2Int[0];
+        if(gridLightType == GridLightType.circle){
+            c = GridUtility.Circle(position,lightRange);
+        }else if(gridLightType == GridLightType.arc)
+        {
+            c = GridUtility.Arc(position,agent.facingDirection,lightRange,45);
+        }
         foreach(Vector2Int p in c)
         {
             TileNode tn = gridElement.tilemapManager.GetTileNode(p);

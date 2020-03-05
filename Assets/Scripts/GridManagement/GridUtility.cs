@@ -243,27 +243,20 @@ public class GridUtility
     }
     public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius,float fieldOfViewAngle){
         List<Vector2Int> arci = new List<Vector2Int>();
-
+        //doing this has no effect but i like to think it prevents floating point rounding errors by avoiding equality between floats
         fieldOfViewAngle = fieldOfViewAngle + 1;
+        //c is the extent of our view in the looking direction.
         Vector2Int c = (center+dir*radius);
-        //arctangent vs atan2? https://en.wikipedia.org/wiki/Atan2
-        float atan = Mathf.Atan2(dir.y,dir.x);
-        float startTan = (atan+fieldOfViewAngle*Mathf.Deg2Rad);
+        float atan = Mathf.Atan2(dir.y,dir.x);//this is the angle, between -pi and pi, of that direction
+        float startTan = (atan+fieldOfViewAngle*Mathf.Deg2Rad);//now our angles we need to be within, around a circle. FOV angle in either direction (so fovAngle should be fovAngle/2?)
         float endTan = (atan-fieldOfViewAngle*Mathf.Deg2Rad);
-        
-        Debug.Log("arctan: "+atan);
-        Debug.Log("starting angle = "+startTan);
-        Debug.Log("ending angle = "+endTan);
-
-        // Vector2 pureDir = new Vector2(center+dir.x,center+dir.y);
-        foreach(Vector2Int test in Circle(center,radius+1))
+        foreach(Vector2Int test in Circle(center,radius+1))//radius+1 was part of my hair-pulling self-doubting testing earlier and now im afraid to remove it or do CircleManhattan at this step
         {
-            Vector2Int t = test-center;
-            int d = GridUtility.ManhattanDistance(test,center);
-            if(d <= radius && d > 0){
-                float testTan = Mathf.Atan2(t.y,t.x);
-                Debug.Log("manhattan distance:"+d+ " for test "+t +" with arctan2:"+testTan);
-                if(startTan < endTan)
+            Vector2Int t = test-center;//relative to origin; ie: a direction
+            int d = GridUtility.ManhattanDistance(test,center);//distance
+            if(d <= radius && d > 0){//the >0 is, again, part of my sanity check when nothing was working
+                float testTan = Mathf.Atan2(t.y,t.x);//the angle around the circle this particular tile is
+                if(startTan < endTan)//so we have to if our testTan is within start and endTan, btu we dont know which is larger, start or end. I bet there is an elegant way to do this part. I dont know it, i just check eitehr condition.
                 {
                     if(testTan <= endTan && testTan >= startTan)
                     {
@@ -276,7 +269,6 @@ public class GridUtility
                         arci.Add(test);
                     }
                 }
-                
             }
         }
         return arci.ToArray();
@@ -312,25 +304,7 @@ public static Vector2Int[] CardinalArc(Vector2Int center, Vector2Int dir, int ra
         }
         return arci.ToArray();
     }
-    public static Vector2Int[] RightFacingTriangle(Vector2Int center, Vector2Int dir, int radius, Vector2Int fovDir){
-        List<Vector2Int> arci = new List<Vector2Int>();
-        int sign = (int)Mathf.Sign(dir.x);
-        for(int i = 1;i<=radius;i++)
-        {
-            int ymax = Mathf.Abs(Mathf.RoundToInt(((float)fovDir.y/(float)fovDir.x)*i));
-            for(int j = -ymax;j<=ymax;j++)
-            {
-                Vector2Int bigt = new Vector2Int(i,j);
-                if(ManhattanDistance(center,center+bigt)<radius)
-                {
-                    if(bigt.x == 0){Debug.Log("wtf");}
-                    arci.Add(center+bigt);
-                }
-            }
-        }
 
-        return arci.ToArray();
-    }
     public static int CompareV2ByTopLeft(Vector2Int a, Vector2Int b)
     {
         if (a == null)

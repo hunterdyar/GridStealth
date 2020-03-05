@@ -48,7 +48,7 @@ public class FloorTrap : AIBase
         {
             if(ge.GetComponent<Agent>() != null){
                 Debug.Log("floor trap on "+ge.gameObject.name);
-                ge.GetComponent<Agent>().Move(GridUtility.DirToV2(pushDirection));
+                ge.GetComponent<Agent>().Move(GridUtility.DirToV2(pushDirection),false);//false is not using up a turn when pushing
             }
         }
         return info;

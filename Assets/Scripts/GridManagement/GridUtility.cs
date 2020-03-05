@@ -241,10 +241,45 @@ public class GridUtility
             }
         }  
     }
-    // public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius){
-     
-    //     return arci.ToArray();
-    // }
+    public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius,float fieldOfViewAngle){
+        List<Vector2Int> arci = new List<Vector2Int>();
+
+        // fieldOfViewAngle = fieldOfViewAngle/2;
+        Vector2Int c = (center+dir*radius);
+        //arctangent vs atan2? https://en.wikipedia.org/wiki/Atan2
+        float atan = Mathf.Atan2(dir.y,dir.x);
+        float startTan = (atan+fieldOfViewAngle*Mathf.Deg2Rad);
+        float endTan = (atan-fieldOfViewAngle*Mathf.Deg2Rad);
+        
+        Debug.Log("arctan: "+atan);
+        Debug.Log("starting angle = "+startTan);
+        Debug.Log("ending angle = "+endTan);
+
+        Vector2 pureDir = new Vector2(dir.x,dir.y);
+        foreach(Vector2Int test in Circle(center,radius+1))
+        {
+            int d = GridUtility.ManhattanDistance(test,center);
+            if(d < radius && d > 0){
+                float testTan = Mathf.Atan2(test.y-center.y,test.x-center.x);
+                Debug.Log("manhattan distance:"+d+ " for test "+test +" with arctan2:"+testTan);
+                if(startTan < endTan)
+                {
+                    if(testTan < endTan && testTan >= startTan)
+                    {
+                        arci.Add(test);
+                    }
+                }else
+                {
+                    if(testTan > endTan && testTan <= startTan)
+                    {
+                        arci.Add(test);
+                    }
+                }
+                
+            }
+        }
+        return arci.ToArray();
+    }
     public static int CompareV2ByTopLeft(Vector2Int a, Vector2Int b)
     {
         if (a == null)

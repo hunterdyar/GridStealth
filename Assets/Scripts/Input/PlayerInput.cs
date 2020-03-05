@@ -97,14 +97,16 @@ public class PlayerInput : MonoBehaviour
 
         // ///TESTING
 
-        // if(Input.GetKeyDown(KeyCode.A)){
-        //     Vector2Int[] view = GridUtility.Arc(agent.position,Vector2Int.one,6);
-        //     foreach(Vector2Int v in view)
-        //     {
-        //         Debug.Log(v);
-        //         tilemapManager.Sound(v,1);
-        //     }
-        // }
+        if(Input.GetKeyDown(KeyCode.A)){
+            Vector2Int[] view = GridUtility.Arc(agent.position,agent.facingDirection,3,45);
+             Debug.Log("pop - "+view.Length);
+
+            foreach(Vector2Int v in view)
+            {
+                Debug.Log(v);
+                tilemapManager.Sound(v,1);
+            }
+        }
 
     }
     IEnumerator WaitAndQueuePath(Vector2Int destination)

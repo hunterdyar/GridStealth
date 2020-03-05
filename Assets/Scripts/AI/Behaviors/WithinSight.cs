@@ -34,6 +34,7 @@ public class WithinSight : Conditional
     public bool WithinViewCone(Vector2Int target, float fieldOfViewAngle)
     {
         Vector2Int direction = target - myGridElement.position;
+        fieldOfViewAngle = fieldOfViewAngle/2;
         if(GridUtility.ManhattanDistance(target,myGridElement.position) > distance){return false;}
         return Vector2.Angle((Vector2)direction, (Vector2)agent.facingDirection) <= fieldOfViewAngle;
     }

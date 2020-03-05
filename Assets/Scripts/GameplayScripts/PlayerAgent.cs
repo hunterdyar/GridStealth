@@ -13,11 +13,13 @@ public class PlayerAgent : Agent
         GlobalVariables.Instance.SetVariable("playerAgent", playerAgent);
         sharedPosition.Value = position;
     }
-    protected override void MoveEnded()
+    protected override void MoveEnded(TurnInfo turn)
     {
         sharedPosition.Value = position;
         GlobalVariables.Instance.SetVariable("playerPosition", sharedPosition);
-        base.MoveEnded();
-        gfm.PlayerTookTurn();        
+        base.MoveEnded(turn);
+        if(turn.useUpTurn){
+            gfm.PlayerTookTurn();
+        }        
     }
 }

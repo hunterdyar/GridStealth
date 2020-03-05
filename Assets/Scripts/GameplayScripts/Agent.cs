@@ -44,12 +44,13 @@ public class Agent : MonoBehaviour
         Vector2Int dir = next-position;
         return Move(dir);
     }
-    public TurnInfo Move(Vector2Int dir)
+    public TurnInfo Move(Vector2Int dir,bool useUpTurn = true)
     {
         TurnInfo info = new TurnInfo();
+        info.useUpTurn = useUpTurn;
         return DoMove(dir,info);
     }
-    protected virtual void MoveEnded()
+    protected virtual void MoveEnded(TurnInfo turn)
     {
         gridElement.OnNewPosition();
     }
@@ -67,7 +68,7 @@ public class Agent : MonoBehaviour
             StartCoroutine(Lerp(transform.position,transform.position+new Vector3(dir.x,dir.y,0),0.33f, info));
             foreach(Agent m in pushing)
             {
-                m.Move(dir);                
+                m.Move(dir,false);//dont use the move of an agent that gets pushed.                
             }
             gridElement.OnNewPosition();
         }

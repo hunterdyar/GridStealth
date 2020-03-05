@@ -4,8 +4,9 @@ using UnityEngine;
 using System;
 public class TurnInfo
 {
-    public Action endOfMoveAction;
+    public Action<TurnInfo> endOfMoveAction;
     public bool turnTaken = true;
+    public bool useUpTurn = true;
     public bool turnInMotion = false;
     public bool blockPlayerMovement = false;
     public bool blockAIMovement = false;
@@ -29,6 +30,6 @@ public class TurnInfo
         turnInMotion = false;
         blockPlayerMovement = false;
         blockAIMovement = false;
-        endOfMoveAction?.Invoke();
+        endOfMoveAction?.Invoke(this);
     }
 }

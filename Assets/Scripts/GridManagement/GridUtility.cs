@@ -244,7 +244,7 @@ public class GridUtility
     public static Vector2Int[] Arc(Vector2Int center, Vector2Int dir, int radius,float fieldOfViewAngle){
         List<Vector2Int> arci = new List<Vector2Int>();
 
-        // fieldOfViewAngle = fieldOfViewAngle/2;
+        fieldOfViewAngle = fieldOfViewAngle + 1;
         Vector2Int c = (center+dir*radius);
         //arctangent vs atan2? https://en.wikipedia.org/wiki/Atan2
         float atan = Mathf.Atan2(dir.y,dir.x);
@@ -255,22 +255,23 @@ public class GridUtility
         Debug.Log("starting angle = "+startTan);
         Debug.Log("ending angle = "+endTan);
 
-        Vector2 pureDir = new Vector2(dir.x,dir.y);
+        // Vector2 pureDir = new Vector2(center+dir.x,center+dir.y);
         foreach(Vector2Int test in Circle(center,radius+1))
         {
+            Vector2Int t = test-center;
             int d = GridUtility.ManhattanDistance(test,center);
-            if(d < radius && d > 0){
-                float testTan = Mathf.Atan2(test.y-center.y,test.x-center.x);
-                Debug.Log("manhattan distance:"+d+ " for test "+test +" with arctan2:"+testTan);
+            if(d <= radius && d > 0){
+                float testTan = Mathf.Atan2(t.y,t.x);
+                Debug.Log("manhattan distance:"+d+ " for test "+t +" with arctan2:"+testTan);
                 if(startTan < endTan)
                 {
-                    if(testTan < endTan && testTan >= startTan)
+                    if(testTan <= endTan && testTan >= startTan)
                     {
                         arci.Add(test);
                     }
                 }else
                 {
-                    if(testTan > endTan && testTan <= startTan)
+                    if(testTan >= endTan && testTan <= startTan)
                     {
                         arci.Add(test);
                     }
@@ -278,6 +279,56 @@ public class GridUtility
                 
             }
         }
+        return arci.ToArray();
+    }
+public static Vector2Int[] CardinalArc(Vector2Int center, Vector2Int dir, int radius, Vector2Int fovDir){
+        List<Vector2Int> arci = new List<Vector2Int>();
+
+        float slopeFov = Mathf.Abs((float)fovDir.y/(float)fovDir.x);
+
+        foreach(Vector2Int test in CircleManhattan(center,radius))
+        {
+            Vector2Int t = test-center;
+            if(!((t.x < 0 && dir.x > 0 ) || (t.x > 0 && dir.x < 0)))//same "side" as dir
+            {
+                if(!((t.y < 0 && dir.y > 0 ) || (t.y > 0 && dir.y < 0)))//same "side" as dir
+                {
+                    float slopeItem = Mathf.Abs((float)t.y/(float)t.x);
+                    if(Mathf.Abs(dir.x) > 0)
+                    {
+                        if(slopeFov >= slopeItem)
+                        {
+                            arci.Add(test);
+                        }
+                    }else if(Mathf.Abs(dir.y) > 0)
+                    {
+                        if(slopeFov <= slopeItem)
+                        {
+                            arci.Add(test);
+                        }
+                    }
+                }
+            }
+        }
+        return arci.ToArray();
+    }
+    public static Vector2Int[] RightFacingTriangle(Vector2Int center, Vector2Int dir, int radius, Vector2Int fovDir){
+        List<Vector2Int> arci = new List<Vector2Int>();
+        int sign = (int)Mathf.Sign(dir.x);
+        for(int i = 1;i<=radius;i++)
+        {
+            int ymax = Mathf.Abs(Mathf.RoundToInt(((float)fovDir.y/(float)fovDir.x)*i));
+            for(int j = -ymax;j<=ymax;j++)
+            {
+                Vector2Int bigt = new Vector2Int(i,j);
+                if(ManhattanDistance(center,center+bigt)<radius)
+                {
+                    if(bigt.x == 0){Debug.Log("wtf");}
+                    arci.Add(center+bigt);
+                }
+            }
+        }
+
         return arci.ToArray();
     }
     public static int CompareV2ByTopLeft(Vector2Int a, Vector2Int b)

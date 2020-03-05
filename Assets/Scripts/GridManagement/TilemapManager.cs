@@ -187,6 +187,15 @@ public class TilemapManager : ScriptableObject
             }
         }
     }
+    public void SoundOneTile(Vector2Int tile)//0 is dark 1 is light.
+    {
+        TileNode tn = GetTileNode(tile);
+        if(tn!=null)
+        {
+            tn.SoundFrom(tile);
+            tn.dither.Blink(1);
+        }
+    }
     //See superCover
     public bool LineOfSight(TileNode a,TileNode b)
     {

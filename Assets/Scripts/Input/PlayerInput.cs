@@ -98,13 +98,11 @@ public class PlayerInput : MonoBehaviour
         // ///TESTING
 
         if(Input.GetKeyDown(KeyCode.A)){
-            Vector2Int[] view = GridUtility.Arc(agent.position,agent.facingDirection,3,45);
-             Debug.Log("pop - "+view.Length);
-
+            Vector2Int[] view = GridUtility.Arc(agent.gridElement.position,agent.facingDirection,4,45);
+            // Vector2Int[] view = GridUtility.RightFacingTriangle(agent.gridElement.position,agent.facingDirection,4,Vector2Int.one);
             foreach(Vector2Int v in view)
             {
-                Debug.Log(v);
-                tilemapManager.Sound(v,1);
+                tilemapManager.SoundOneTile(v);
             }
         }
 

@@ -2806,9 +2806,17 @@
             <e p="PlayerInput.cs" t="Include" />
           </e>
           <e p="Inventory" t="Include">
+            <e p="InventoryItem.cs" t="Include" />
             <e p="InventoryManager.cs" t="Include" />
           </e>
+          <e p="SOAGenerated" t="Include">
+            <e p="Collections" t="Include">
+              <e p="InventoryItemCollection.cs" t="Include" />
+            </e>
+          </e>
           <e p="UI" t="Include">
+            <e p="InventoryUIButton.cs" t="Include" />
+            <e p="InventoryUIManager.cs" t="Include" />
             <e p="TextUpdater.cs" t="Include" />
           </e>
           <e p="Visuals" t="Include">
@@ -2954,18 +2962,6 @@
               <e p="Vector2UnityEvent.cs" t="Include" />
               <e p="Vector3UnityEvent.cs" t="Include" />
               <e p="Vector4UnityEvent.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Examples" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="CollectionCountDisplayer.cs" t="Include" />
-              <e p="DamageDealer.cs" t="Include" />
-              <e p="DamageDealerWithEvent.cs" t="Include" />
-              <e p="Disabler.cs" t="Include" />
-              <e p="ImageFillSetter.cs" t="Include" />
-              <e p="KeyboardMover.cs" t="Include" />
-              <e p="ObjectAdder.cs" t="Include" />
-              <e p="UnitHealth.cs" t="Include" />
             </e>
           </e>
           <e p="Extensions" t="Include">

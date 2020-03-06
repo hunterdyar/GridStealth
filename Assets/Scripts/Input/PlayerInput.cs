@@ -32,9 +32,21 @@ public class PlayerInput : MonoBehaviour
 		gfm.PlayerInNewLocationAction -= agent.CachePathfind;
 	}
 
-	public void ReceiveInput(Vector2Int dir)
+	public void GoNorth()
 	{
-		inputStack.Enqueue(dir);
+		inputStack.Enqueue(Vector2Int.up);
+	}
+	public void GoSouth()
+	{
+		inputStack.Enqueue(Vector2Int.down);
+	}
+	public void GoEast()
+	{
+		inputStack.Enqueue(Vector2Int.right);
+	}
+	public void GoWest()
+	{
+		inputStack.Enqueue(Vector2Int.left);
 	}
 
 	// Update is called once per frame

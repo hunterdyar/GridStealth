@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using Inventory;
+using UnityEngine.Serialization;
 
 public class GridElement : MonoBehaviour
 {
@@ -12,9 +14,10 @@ public class GridElement : MonoBehaviour
 	public bool opaque = false;
 	[Title("Settings")] public int brightness;
 	public Vector2Int position => GridPosition();
-	public Action OnNewPositionAction;
-	public Action<Vector2Int> SoundFromAction;
-
+	[FormerlySerializedAs("OnNewPositionAction")] public Action onNewPositionAction;
+	public Action<Vector2Int> soundFromAction;
+	public InventoryItem item;
+	public bool destroyOnItemPickup = true;
 	public Vector2Int GridPosition()
 	{
 		return tilemapManager.WorldToCell(transform.position);
@@ -27,7 +30,7 @@ public class GridElement : MonoBehaviour
 
 	public void SoundFrom(Vector2Int source)
 	{
-		SoundFromAction?.Invoke(source);
+		soundFromAction?.Invoke(source);
 	}
 
 	public void OnNewPosition()
@@ -54,9 +57,7 @@ public class GridElement : MonoBehaviour
 			}
 		} //else: our object was moved where there isnt a tile. 
 
-		if (OnNewPositionAction != null)
-		{
-			OnNewPositionAction();
-		}
+		
+		onNewPositionAction?.Invoke();
 	}
 }

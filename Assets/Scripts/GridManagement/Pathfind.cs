@@ -7,18 +7,18 @@ namespace GridManagement
 	public class Pathfind
 	{
 		internal TilemapManager tilemapManager;
-		TileNode cachedStart;
+		TileNode _cachedStart;
 		public readonly List<TileNode> path = new List<TileNode>();
 		public Dictionary<TileNode, int> Distances { get; set; } = new Dictionary<TileNode, int>();
 		Dictionary<TileNode, TileNode> cameFrom = new Dictionary<TileNode, TileNode>();
-		public int pathStatus = 0;
-		public bool running = false;
+		public int pathStatus;
+		public bool running;
 
 		public void Search(TileNode start, TileNode end, MonoBehaviour context)
 		{
 			//start up the search.
 			//Reset our status if need be. If not need be... we should carry on.
-			if (cachedStart != start)
+			if (_cachedStart != start)
 			{
 				pathStatus = 0;
 			}
@@ -56,7 +56,7 @@ namespace GridManagement
 		{
 			running = true;
 			var frontier = new Queue<TileNode>();
-			cachedStart = start;
+			_cachedStart = start;
 			frontier.Enqueue(start);
 			cameFrom = new Dictionary<TileNode, TileNode>();
 			Distances = new Dictionary<TileNode, int> {[start] = 0};

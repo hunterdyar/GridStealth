@@ -25,7 +25,7 @@ public class GridLight : MonoBehaviour
 	{
 		gridElement = GetComponent<GridElement>();
 		agent = GetComponent<Agent>();
-		gridElement.OnNewPositionAction += Illuminate;
+		gridElement.onNewPositionAction += Illuminate;
 	}
 
 	void OnEnable()

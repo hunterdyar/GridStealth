@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7179416343417016978}
   - component: {fileID: 7179416343417016977}
   - component: {fileID: 7179416343417016974}
+  - component: {fileID: 6008423051713181825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -51,6 +52,8 @@ MonoBehaviour:
   solid: 0
   opaque: 0
   brightness: 0
+  item: {fileID: 0}
+  destroyOnItemPickup: 1
 --- !u!212 &7179416343417016973
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -117,19 +120,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      time: -0.0008049011
+      value: 0.17204285
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      time: 1.0008545
+      value: 0.17266846
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -138,7 +141,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
-  enalbled: 1
+  gridLightType: 0
   lightRange: 1
 --- !u!114 &7179416343417016977
 MonoBehaviour:
@@ -152,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadb75b1df5fd8a40b6ee39f88130b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
 --- !u!114 &7179416343417016974
 MonoBehaviour:
@@ -166,5 +168,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dcaa52e38e69c4bbc0fc7490233356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElement: {fileID: 0}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  destination: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
   pushable: 1
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
+  sharedPosition:
+    mIsShared: 0
+    mIsGlobal: 0
+    mIsDynamic: 0
+    mName: 
+    mToolTip: 
+    mPropertyMapping: 
+    mPropertyMappingOwner: {fileID: 0}
+    mNetworkSync: 0
+    mValue: {x: 0, y: 0}
+--- !u!114 &6008423051713181825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179416343417016975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f8e281b9ce38642a510a6a8cd94e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 16dea56858338f447b81b05cf200087e, type: 2}
+  startingInventory: {fileID: 11400000, guid: c5c446585997aee41ba979fc5fdcdc57, type: 2}
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}

@@ -1,39 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using ScriptableObjectArchitecture;
+﻿using ScriptableObjectArchitecture;
 using UnityEngine;
 
-public class InventoryUIManager : MonoBehaviour
+namespace UI
 {
-    public InventoryItemCollection inventory;
-    public GameObject inventoryUIPrefab;
-    private void OnEnable()
+    public class InventoryUIManager : MonoBehaviour
     {
-        Debug.Log("Subscribing to listener");
-        if (inventory.updateTrigger != null) inventory.updateTrigger += UpdateInventoryDisplay;
-        UpdateInventoryDisplay();//also do this when we get re-enabled
-    }
+        public InventoryItemCollection inventory;
+        public InventoryUIButton[] inventorySlots;
+        private void OnEnable()
+        {
+            if (inventory.updateTrigger != null) inventory.updateTrigger += UpdateInventoryDisplay;
+            UpdateInventoryDisplay();//also do this when we get re-enabled, because, usually, inventory changes happen when the UI is hidden. like... when we move.
+        }
 
-    private void OnDisable()
-    {
-        if (inventory.updateTrigger != null) inventory.updateTrigger -= UpdateInventoryDisplay;
-    }
+        private void OnDisable()
+        {
+            if (inventory.updateTrigger != null) inventory.updateTrigger -= UpdateInventoryDisplay;
+        }
     
-    void UpdateInventoryDisplay()
-    {
-        Debug.Log("Inventory display to be updated");
-        //Destroy all children
-        foreach (Transform child in transform)
+        void UpdateInventoryDisplay()
         {
-            Destroy((child.gameObject));
+            for(int i = 0;i<inventorySlots.Length;i++)
+            {
+                inventorySlots[i].item = null;
+                if (inventory.Count > i)
+                {
+                    if (inventory[i] != null)
+                    {
+                        inventorySlots[i].item = inventory[i];
+                    }
+                }
+                inventorySlots[i].UpdateSelf();
+            }
         }
-
-        foreach (var item in inventory)
-        {
-            var button = GameObject.Instantiate(inventoryUIPrefab, transform).GetComponent<InventoryUIButton>();
-            button.item = item;
-        }
-        
     }
 }

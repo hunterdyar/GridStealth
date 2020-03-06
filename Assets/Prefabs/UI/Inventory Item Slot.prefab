@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8295813361128296009}
   - component: {fileID: 3346061357584545616}
   m_Layer: 0
-  m_Name: Inventory Item Button
+  m_Name: Inventory Item Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  image: {fileID: 8295813361128296010}
+  emptyItemSprite: {fileID: 0}
+  text: {fileID: 8295813362382303667}
 --- !u!1 &8295813362382303665
 GameObject:
   m_ObjectHideFlags: 0

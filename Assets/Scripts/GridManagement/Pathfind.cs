@@ -10,7 +10,7 @@ namespace GridManagement
 		TileNode _cachedStart;
 		public readonly List<TileNode> path = new List<TileNode>();
 		public Dictionary<TileNode, int> Distances { get; set; } = new Dictionary<TileNode, int>();
-		Dictionary<TileNode, TileNode> cameFrom = new Dictionary<TileNode, TileNode>();
+		Dictionary<TileNode, TileNode> _cameFrom = new Dictionary<TileNode, TileNode>();
 		public int pathStatus;
 		public bool running;
 
@@ -36,10 +36,10 @@ namespace GridManagement
 			path.Clear();
 			while (search != start)
 			{
-				if (cameFrom.ContainsKey(search))
+				if (_cameFrom.ContainsKey(search))
 				{
 					path.Add(search);
-					search = cameFrom[search];
+					search = _cameFrom[search];
 				}
 				else
 				{
@@ -58,7 +58,7 @@ namespace GridManagement
 			var frontier = new Queue<TileNode>();
 			_cachedStart = start;
 			frontier.Enqueue(start);
-			cameFrom = new Dictionary<TileNode, TileNode>();
+			_cameFrom = new Dictionary<TileNode, TileNode>();
 			Distances = new Dictionary<TileNode, int> {[start] = 0};
 			var iterations = 0;
 			// Debug.Log("pathfinding...");
@@ -74,7 +74,7 @@ namespace GridManagement
 
 					frontier.Enqueue(next);
 					Distances[next] = Distances[current] + 1;
-					cameFrom[next] = current;
+					_cameFrom[next] = current;
 				}
 
 				//performance things

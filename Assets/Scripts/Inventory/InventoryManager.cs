@@ -21,10 +21,10 @@ namespace Inventory
 			inventory.updateTrigger += InventoryCheck;
 		}
 
-		void InventoryCheck()
+		private void InventoryCheck()
 		{
 			//uh, so, the action only seems to get fired when it had a debug listener
-			//so thats what this function is really doing. 
+			//so that's what this function is really doing. 
 			//i guess i dont understand actions well enough?
 			//or its a race-condition issue. idk.
 		}

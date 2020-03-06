@@ -26,4 +26,9 @@ public class PlayerAgent : Agent
 			gfm.PlayerTookTurn();
 		}
 	}
+
+	public void WaitATurn()
+	{
+		gfm.PlayerTookTurn();
+	}
 }

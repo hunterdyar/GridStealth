@@ -13,7 +13,7 @@ namespace GridManagement
 		Dictionary<TileNode, TileNode> cameFrom = new Dictionary<TileNode, TileNode>();
 		public int pathStatus = 0;
 		public bool running = false;
-	
+
 		public void Search(TileNode start, TileNode end, MonoBehaviour context)
 		{
 			//start up the search.
@@ -22,7 +22,7 @@ namespace GridManagement
 			{
 				pathStatus = 0;
 			}
-		
+
 			if (pathStatus == 0 || pathStatus == -1)
 			{
 				//if path is unfound or failed to find
@@ -71,6 +71,7 @@ namespace GridManagement
 					{
 						continue;
 					}
+
 					frontier.Enqueue(next);
 					Distances[next] = Distances[current] + 1;
 					cameFrom[next] = current;

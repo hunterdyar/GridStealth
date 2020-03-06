@@ -8,46 +8,53 @@ using GridManagement;
 [TaskCategory("Grid System")]
 public class MoveTowards : Action
 {
-    public SharedVector2Int destination;
-    public SharedAgent myAgent;
-    Agent agent;
-    bool pathFailed = false;
-    Pathfind finder;
-    public override TaskStatus OnUpdate()
-    {
-        agent = myAgent.Value;
-        finder = agent.SetDestination(destination.Value);
+	public SharedVector2Int destination;
+	public SharedAgent myAgent;
+	Agent agent;
+	bool pathFailed = false;
+	Pathfind finder;
 
-        if (agent.atDestination)
-        {
-            return TaskStatus.Success;
-        }
-        if(pathFailed)
-        {
-            return TaskStatus.Failure;
-        }
+	public override TaskStatus OnUpdate()
+	{
+		agent = myAgent.Value;
+		finder = agent.SetDestination(destination.Value);
 
-        StartCoroutine(MoveTowardsDestination());
-        return TaskStatus.Running;
-   }
-   IEnumerator MoveTowardsDestination()
-   {
-        bool pathfailed = false;
-        while(finder.pathStatus != 1)
-        {
-            if(finder.pathStatus == -1)
-            {
-                pathfailed = true;
-                break;
-            }
-            yield return null;
-        }
-            if(!pathfailed){
-            while(agent.pathToDestination.Count<0)
-            {
-                yield return null;
-            }
-            agent.MoveTowardsDestination();
-        }
-   }
+		if (agent.atDestination)
+		{
+			return TaskStatus.Success;
+		}
+
+		if (pathFailed)
+		{
+			return TaskStatus.Failure;
+		}
+
+		StartCoroutine(MoveTowardsDestination());
+		return TaskStatus.Running;
+	}
+
+	IEnumerator MoveTowardsDestination()
+	{
+		bool pathfailed = false;
+		while (finder.pathStatus != 1)
+		{
+			if (finder.pathStatus == -1)
+			{
+				pathfailed = true;
+				break;
+			}
+
+			yield return null;
+		}
+
+		if (!pathfailed)
+		{
+			while (agent.pathToDestination.Count < 0)
+			{
+				yield return null;
+			}
+
+			agent.MoveTowardsDestination();
+		}
+	}
 }

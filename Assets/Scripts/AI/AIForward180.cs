@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class AIForward180 : AIBase
 {
-    void Start()
-    {
-        
-    }
+	void Start()
+	{
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	// Update is called once per frame
+	void Update()
+	{
+	}
 }

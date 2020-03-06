@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class GameFlowManagerSetup : MonoBehaviour
 {
-    public GameFlowManager manager;
-    void Awake()
-    {
-        manager.runner = this;
-        GameFlowManager.instance = manager;
-        manager.Init();        
-        
-    }
+	public GameFlowManager manager;
 
+	void Awake()
+	{
+		manager.runner = this;
+		GameFlowManager.instance = manager;
+		manager.Init();
+	}
 }

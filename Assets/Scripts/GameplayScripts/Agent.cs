@@ -12,7 +12,10 @@ public class Agent : MonoBehaviour
 	public Vector2Int position => gridElement.position;
 	public Vector2Int destination;
 	public Queue<Vector2Int> pathToDestination = new Queue<Vector2Int>();
+
 	Pathfind pathfind;
+
+	//doing stuff up in this shit.
 	public Vector2Int facingDirection;
 	public Action atDestinationAction;
 	public bool pushable;
@@ -34,6 +37,7 @@ public class Agent : MonoBehaviour
 	{
 		destination = position;
 	}
+
 	//moves in a dir out of the movement stack
 	public TurnInfo MoveTowardsDestination()
 	{
@@ -121,22 +125,22 @@ public class Agent : MonoBehaviour
 		}
 
 		List<GridElement> atNode = next.itemsHere;
-		foreach (GridElement gein in next.itemsHere)
+		foreach (GridElement gridElementIn in next.itemsHere)
 		{
 			//can we push solid things?
-			if (gein.solid)
+			if (gridElementIn.solid)
 			{
 				return false;
 			}
 
-			if (gein.GetComponent<Agent>() != null)
+			if (gridElementIn.GetComponent<Agent>() != null)
 			{
-				Agent neigh = gein.GetComponent<Agent>();
-				if (neigh.pushable && neigh != this)
+				Agent neighbor = gridElementIn.GetComponent<Agent>();
+				if (neighbor.pushable && neighbor != this)
 				{
-					if (neigh.CanMoveInDir(dir, ref pushing))
+					if (neighbor.CanMoveInDir(dir, ref pushing))
 					{
-						pushing.Add(neigh);
+						pushing.Add(neighbor);
 					}
 					else
 					{

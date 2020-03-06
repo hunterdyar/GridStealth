@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GridManagement;
 using UnityEngine;
 [RequireComponent(typeof(Agent))]
 public class PlayerInput : MonoBehaviour
@@ -25,6 +26,10 @@ public class PlayerInput : MonoBehaviour
     void OnDisable()
     {
         gfm.PlayerInNewLocationAction -= agent.CachePathfind;
+    }
+    public void RecieveInput(Vector2Int dir)
+    {
+        inputStack.Enqueue(dir);
     }
     // Update is called once per frame
     void Update()

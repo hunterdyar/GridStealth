@@ -7,8 +7,8 @@ public class TileNode
     public Vector2Int position;
     public bool isSolid;//assigned by tile
     public bool isOpaque;
-    public bool solid { get{return IsSolid();}}//currently solid.
-    public bool opaque { get{return IsOpaque();}}
+    public bool solid => IsSolid(); //currently solid.
+    public bool opaque => IsOpaque();
     public float brightness = 0;
     public GameObject gameObjectHere;
     //things that are on this square.

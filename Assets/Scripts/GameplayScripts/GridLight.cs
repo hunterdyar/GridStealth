@@ -10,7 +10,7 @@ public enum GridLightType{
 [RequireComponent(typeof(GridElement))]
 public class GridLight : MonoBehaviour
 {
-    Vector2Int position {get{return gridElement.position;}}
+    Vector2Int position => gridElement.position;
     GridElement gridElement;
     Agent agent;
     public AnimationCurve lightFalloffCurve;

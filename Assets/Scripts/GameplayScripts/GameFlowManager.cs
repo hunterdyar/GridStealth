@@ -10,7 +10,7 @@ public class GameFlowManager : ScriptableObject
     public IntReference playerTurnsAllowed;
     public IntReference playerTurnsTaken;
     public FloatReference enemySubTurnDelay;
-    private int playerTurnsLeft {get{return playerTurnsAllowed.Value-playerTurnsTaken.Value;}}
+    private int playerTurnsLeft => playerTurnsAllowed.Value-playerTurnsTaken.Value;
     private int AITurnsTaken;
     public GameFlowManagerSetup runner;
     public static GameFlowManager instance;

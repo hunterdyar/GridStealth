@@ -12,7 +12,7 @@ public class GridElement : MonoBehaviour
     public bool opaque = false;
     [Title("Settings")]
     public int brightness;
-    public Vector2Int position{get{return GridPosition();}}
+    public Vector2Int position => GridPosition();
     public Action OnNewPositionAction;
     public Action<Vector2Int> SoundFromAction;
     public Vector2Int GridPosition()

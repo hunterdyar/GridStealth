@@ -884,12 +884,12 @@ PrefabInstance:
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
@@ -921,11 +921,42 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296009, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_Name
       value: Inventory Item Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303666, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303667, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b64bf474c0d4a9748b251be374e16927,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658b9f4c7daa8f24cb5de6249ab7e39c, type: 3}
 --- !u!224 &379781694 stripped
@@ -4824,12 +4855,12 @@ PrefabInstance:
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
@@ -4861,11 +4892,42 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296009, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_Name
       value: Inventory Item Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303666, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303667, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b64bf474c0d4a9748b251be374e16927,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658b9f4c7daa8f24cb5de6249ab7e39c, type: 3}
 --- !u!1 &1286624925
@@ -4929,7 +4991,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: -18
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0
@@ -5818,12 +5880,12 @@ PrefabInstance:
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296008, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
@@ -5855,11 +5917,22 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_Name
       value: Inventory Item Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303667, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b64bf474c0d4a9748b251be374e16927,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658b9f4c7daa8f24cb5de6249ab7e39c, type: 3}
 --- !u!1 &1564619669

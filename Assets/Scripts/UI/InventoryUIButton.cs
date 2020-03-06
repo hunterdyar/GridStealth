@@ -31,7 +31,7 @@ namespace UI
                     image.sprite = null;
                 }
 
-                text.text = "";
+                text.text = "empty";
             }
             else
             {

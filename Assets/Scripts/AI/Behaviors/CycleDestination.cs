@@ -25,6 +25,6 @@ public class CycleDestination : Action
 		}
 
 		myAgent.Value.SetDestination(destinations[currentDestination].position);
-		return TaskStatus.Running;
+		return TaskStatus.Success;
 	}
 }

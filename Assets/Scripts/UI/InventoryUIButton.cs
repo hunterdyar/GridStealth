@@ -1,4 +1,5 @@
-﻿using Inventory;
+﻿using Gameplay;
+using Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace UI
         public Image image;
         public Sprite emptyItemSprite;
         public Text text;
+        public GameFlowManager gfm;
         void Awake()
         {
             image = GetComponent<Image>();
@@ -18,8 +20,18 @@ namespace UI
             UpdateSelf();
         }
 
+        public void UseItemButton()
+        {
+            if (item != null)
+            {
+                Debug.Log("use item button");
+                item.UseItem();
+                gfm.PlayerTookTurn();
+            }
+        }
         public void UpdateSelf()
         {
+            
             if (item == null)
             {
                 if (emptyItemSprite != null)

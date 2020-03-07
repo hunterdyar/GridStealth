@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3504404287797446963}
   - component: {fileID: -2026390806997167265}
   - component: {fileID: 7050475465706739959}
+  - component: {fileID: 3504404286423027239}
   m_Layer: 0
   m_Name: AI Patrolling Guard
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  gridElement: {fileID: 0}
+  gridElement: {fileID: 7050475465706739950}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   destination: {x: 0, y: 0}
   facingDirection: {x: 0, y: 0}
@@ -161,6 +162,7 @@ MonoBehaviour:
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridLightType: 1
   lightRange: 4
+  lightOn: 1
 --- !u!114 &-2026390806997167265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +199,62 @@ MonoBehaviour:
   turnsCanTake: 3
   gameFlowManager: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridElement: {fileID: 7050475465706739950}
+--- !u!114 &3504404286423027239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050475465706739954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 1
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Patrolling Guard
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(369.125,20.8750381)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(1,168.999954)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
+        by AIBase","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(49.99996,140.000015)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-231.724091,118.965454)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"WithinSight","NodeData":{"Offset":"(-80.61641,120.526276)","Comment":"Player
+        within sight"},"ID":4,"Name":"Within Sight","Instant":true,"SharedFOVmyFieldOfView":{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":0},"SharedAgenttargetAgent":{"Type":"SharedAgent","Name":"playerAgent","IsShared":true,"IsGlobal":true},"SharedGridElementtargetGE":{"Type":"SharedGridElement","Name":null},"Vector2InttargetPosition":{}},{"Type":"MoveTowards","NodeData":{"Offset":"(47.54582,120.526291)","Comment":"Chase
+        Player"},"ID":5,"Name":"Move Towards","Instant":true,"SharedVector2Intdestination":{"Type":"BehaviorDesigner.Runtime.SharedVector2Int","Name":"playerPosition","IsShared":true,"IsGlobal":true,"Vector2IntmValue":{}},"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":1}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(180,170)"},"ID":6,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(-199.999985,305.238)"},"ID":7,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":2}},{"Type":"CycleDestination","NodeData":{"Offset":"(-30,291.428467)"},"ID":8,"Name":"Cycle
+        Destination","Instant":true,"Transform[]destinations":[3,4],"Int32currentDestination":0,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":5}},{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(149.99971,291.428436)"},"ID":9,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":6}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(489.999939,173.333313)"},"ID":10,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(24.9999771,163.333374)"},"ID":11,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":7}}]}]}]},"Variables":[{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":8},{"Type":"SharedGridElement","Name":"myGridElement","IsShared":true,"GridElementmValue":9},{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":10},{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
+        by AIBase","Int32mValue":0}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects:
+        - {fileID: -2026390806997167265}
+        - {fileID: 7050475465706739952}
+        - {fileID: 7050475465706739952}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 7050475465706739952}
+        - {fileID: 7050475465706739952}
+        - {fileID: 7050475465706739952}
+        - {fileID: 7050475465706739952}
+        - {fileID: 7050475465706739950}
+        - {fileID: -2026390806997167265}
+        byteData: 
+        byteDataArray: 
+      Version: 1.6.4
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 0

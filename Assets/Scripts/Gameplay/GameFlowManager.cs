@@ -75,6 +75,7 @@ namespace Gameplay
 			var playerBlockingTurns = new List<TurnInfo>();
 			foreach (AIBase ai in _lumpAi)
 			{
+				if (ai.GetIsDead()) continue;//dont take a turn if ya dead.
 				if (subTurn <= ai.turnsCanTake)
 				{
 					var info = ai.TakeTurn(); //this takes the actual turn
@@ -109,6 +110,7 @@ namespace Gameplay
 			bool takeAnotherAITurn = false;
 			foreach (AIBase ai in _lumpAi)
 			{
+				if (ai.GetIsDead()) continue;//dont take a turn if ya dead!
 				if (subTurn < ai.turnsCanTake)
 				{
 					takeAnotherAITurn = true;

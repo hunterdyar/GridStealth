@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Inventory
 {
@@ -6,5 +7,13 @@ namespace Inventory
 	{
 		public string itemName;
 		public Sprite sprite;
+		public bool LoseItemAfterUse;
+		public Action useItemAction;
+		public Action<InventoryItem> useInventoryItemAction;
+		public void UseItem()
+		{
+			useItemAction?.Invoke();
+			useInventoryItemAction?.Invoke(this);
+		}
 	}
 }

@@ -29,13 +29,14 @@ namespace Inventory
 			//i guess i dont understand actions well enough?
 			//or its a race-condition issue. idk.
 		}
+		
 		void Start()
 		{
 			inventory.Clear();
 			//reset starting inventory
 			foreach (var item in startingInventory)
 			{
-				inventory.Add(item);
+				AddItemToInventory(item);
 				
 			}
 			inventory.updateTrigger?.Invoke();
@@ -57,14 +58,21 @@ namespace Inventory
 			if (!inventory.Contains(item))
 			{
 				inventory.Add(item);
+				
+				if (item.LoseItemAfterUse)
+				{
+					item.useInventoryItemAction += RemoveItemFromInventory;
+				}
+
 				inventory.updateTrigger?.Invoke();
 			}
 		}
 
-		private void RemoveItemFromInventory(InventoryItem item)
+		public void RemoveItemFromInventory(InventoryItem item)
 		{
 			if (inventory.Contains(item))
 			{
+				item.useInventoryItemAction -= RemoveItemFromInventory;
 				inventory.Remove(item);
 				inventory.updateTrigger?.Invoke();
 			}

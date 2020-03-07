@@ -16,8 +16,8 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 
 	protected void Awake()
 	{
-		tree = GetComponent<BehaviorTree>();
 		agent = GetComponent<Agent>();
+		tree = GetComponent<BehaviorTree>();
 		gridElement = GetComponent<GridElement>();
 		if (turnsCanTake == 0)
 		{
@@ -25,6 +25,22 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 		}
 	}
 
+	public bool GetIsDead()
+	{
+		if (agent == null)
+		{
+			//inanimate things cant die?
+			//fuck, can we break them tho?
+			//need to move status to AIBase.
+			return false;
+		}
+		return agent.status == AgentStatus.Dead;
+	}
+	public void KillMe()
+	{
+		agent.status = AgentStatus.Dead;
+		GetComponent<SpriteRenderer>().color = Color.grey;
+	}
 	void Start()
 	{
 		//Update Behavior Tree Variables

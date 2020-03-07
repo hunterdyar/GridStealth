@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 7179416343417016977}
   - component: {fileID: 7179416343417016974}
   - component: {fileID: 6008423051713181825}
+  - component: {fileID: 872112252}
+  - component: {fileID: 872112253}
+  - component: {fileID: 872112255}
+  - component: {fileID: 872112256}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,7 +146,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridLightType: 0
-  lightRange: 1
+  lightRange: 0
+  lightOn: 0
 --- !u!114 &7179416343417016977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
+  handleInput:
+    _useConstant: 1
+    _constantValue: 1
+    _variable: {fileID: 0}
 --- !u!114 &7179416343417016974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dcaa52e38e69c4bbc0fc7490233356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridElement: {fileID: 0}
+  status: 0
+  gridElement: {fileID: 7179416343417016972}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   destination: {x: 0, y: 0}
   facingDirection: {x: 0, y: 0}
@@ -199,3 +209,130 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: 16dea56858338f447b81b05cf200087e, type: 2}
   startingInventory: {fileID: 11400000, guid: c5c446585997aee41ba979fc5fdcdc57, type: 2}
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
+--- !u!114 &872112252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179416343417016975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 0
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7179416343417016977}
+        m_MethodName: DisablePlayerInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameEvent: disablePlayerInput
+  ListenForAllGameEvents: 0
+--- !u!114 &872112253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179416343417016975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 0
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7179416343417016977}
+        m_MethodName: EnablePlayerInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameEvent: enablePlayerInput
+  ListenForAllGameEvents: 0
+--- !u!114 &872112255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179416343417016975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 0
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7179416343417016974}
+        m_MethodName: WaitATurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameEvent: playerDoesNothing
+  ListenForAllGameEvents: 0
+--- !u!114 &872112256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179416343417016975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506697cc73953124a801079918dd2f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightFalloffCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
+  gridLightType: 1
+  lightRange: 6
+  lightOn: 0

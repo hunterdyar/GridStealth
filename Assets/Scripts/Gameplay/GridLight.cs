@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace Gameplay
 		public GameFlowManager gfm;
 		public GridLightType gridLightType;
 		public int lightRange;
+		public bool lightOn = true;
 
 		[Button("Assign gridElement")]
 		void Awake()
@@ -47,13 +49,15 @@ namespace Gameplay
 			gfm.postGridElementsUpdatedAction -= Illuminate;
 		}
 
+		public void ForceIlluminate()
+		{
+			Illuminate();
+		}
+
 		[Button("Illuminate")]
 		void Illuminate()
 		{
-			if (!enabled)
-			{
-				return;
-			}
+			
 
 			//remove self from all levelNodes.
 			foreach (TileNode t in gridElement.tilemapManager.allTileNodes)
@@ -64,15 +68,23 @@ namespace Gameplay
 					t.SetBrightness();
 				}
 			}
-
-			Vector2Int[] c = new Vector2Int[0];
-			if (gridLightType == GridLightType.Circle)
+			//dont do anything if we are turned off.
+			if (!lightOn)
 			{
-				c = GridUtility.Circle(position, lightRange);
+				return;
 			}
-			else if (gridLightType == GridLightType.Arc)
+
+			var c = new Vector2Int[0];
+			switch (gridLightType)
 			{
-				c = GridUtility.Arc(position, agent.facingDirection, lightRange, 45);
+				case GridLightType.Circle:
+					c = GridUtility.Circle(position, lightRange);
+					break;
+				case GridLightType.Arc:
+					c = GridUtility.Arc(position, agent.facingDirection, lightRange, 45);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
 			}
 
 			foreach (Vector2Int p in c)

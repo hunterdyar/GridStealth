@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 258c88e690cc36948ad8a3c94e7887d2, type: 3}
-  m_Name: Knife
+  m_Name: Key
   m_EditorClassIdentifier: 
-  itemName: Knife
-  sprite: {fileID: 21300000, guid: 2a4662d2fbcf81d4daf4d42d633fbdb7, type: 3}
-  LoseItemAfterUse: 1
+  itemName: Key
+  sprite: {fileID: 21300000, guid: 77a59bb5a830b1340a5a80270f28ff03, type: 3}

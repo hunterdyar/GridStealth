@@ -48,6 +48,8 @@ MonoBehaviour:
   solid: 0
   opaque: 0
   brightness: 0
+  item: {fileID: 0}
+  destroyOnItemPickup: 1
 --- !u!114 &4516839512642928124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,4 +87,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
+  gridLightType: 0
   lightRange: 5
+  lightOn: 1

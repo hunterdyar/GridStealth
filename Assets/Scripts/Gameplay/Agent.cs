@@ -40,6 +40,7 @@ namespace Gameplay
 		{
 			pathfind = new Pathfind {tilemapManager = tilemapManager};
 			gridElement = GetComponent<GridElement>();
+			status = AgentStatus.Normal;
 			if (gridElement.solid && pushable)
 			{
 				Debug.LogWarning("Agent is pushable but gridElement is set to solid. overriding gridElement solid to false");
@@ -86,6 +87,12 @@ namespace Gameplay
 			if (dir.magnitude != 1)
 			{
 				Debug.LogError("invalid movement for move: " + dir, gameObject);
+			}
+
+			if (status == AgentStatus.Dead)
+			{
+				info.turnTaken = false;
+				return info;
 			}
 
 			List<Agent> pushing = new List<Agent>();

@@ -4666,115 +4666,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7179416343040610371}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &872112252
+--- !u!114 &872112256 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872112251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugMode: 0
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 872112254}
-        m_MethodName: DisablePlayerInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  GameEvent: disablePlayerInput
-  ListenForAllGameEvents: 0
---- !u!114 &872112253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872112251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugMode: 0
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 872112254}
-        m_MethodName: EnablePlayerInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  GameEvent: enablePlayerInput
-  ListenForAllGameEvents: 0
---- !u!114 &872112254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7179416343417016977, guid: 98c3108e854891349a7f0e82ef0c88ff,
+  m_CorrespondingSourceObject: {fileID: 872112256, guid: 98c3108e854891349a7f0e82ef0c88ff,
     type: 3}
   m_PrefabInstance: {fileID: 7179416343040610371}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872112251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadb75b1df5fd8a40b6ee39f88130b1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &872112255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872112251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea9f92203d31e240bc110ff7b26d05c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugMode: 0
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 872112260}
-        m_MethodName: WaitATurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  GameEvent: playerDoesNothing
-  ListenForAllGameEvents: 0
---- !u!114 &872112257 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7179416343417016972, guid: 98c3108e854891349a7f0e82ef0c88ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 7179416343040610371}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872112251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf0c2fbcfec7a749854c19698bab3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 506697cc73953124a801079918dd2f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &872112260 stripped
@@ -4789,6 +4690,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dcaa52e38e69c4bbc0fc7490233356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &872112262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872112251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084dbcb9cb952be41a7da915c13e878d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 16dea56858338f447b81b05cf200087e, type: 2}
+  playerAgent: {fileID: 872112260}
+  tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
+  inventoryManager: {fileID: 0}
+  knifeItem: {fileID: 11400000, guid: a340840397627ac49b93dca78b253504, type: 2}
+  flashLightItem: {fileID: 11400000, guid: 25f2290b8bfc919448522e37c03c1478, type: 2}
+  flashlight: {fileID: 872112256}
+  bellItem: {fileID: 11400000, guid: 920005687d865d142bd7e71044cf429b, type: 2}
 --- !u!1 &878390979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,6 +5666,7 @@ MonoBehaviour:
   gfm: {fileID: 11400000, guid: 696a95a9d15d43d49a5324f3920f5a7a, type: 2}
   gridLightType: 0
   lightRange: 10
+  lightOn: 1
 --- !u!114 &1306990046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6011,32 +5933,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8295813361128296010, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
-        type: 3}
-      propertyPath: m_FillCenter
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_Name
       value: Inventory Item Slot
       objectReference: {fileID: 0}
-    - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295813362382303665, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295813362382303667, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: b64bf474c0d4a9748b251be374e16927,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658b9f4c7daa8f24cb5de6249ab7e39c, type: 3}
 --- !u!1 &1564619669
@@ -13978,6 +13879,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3504404286423027239, guid: 1859ecce63f4e4949ac8830923424ab9,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1374613165}
+    - target: {fileID: 3504404286423027239, guid: 1859ecce63f4e4949ac8830923424ab9,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 648855314}
     - target: {fileID: 7050475465706739949, guid: 1859ecce63f4e4949ac8830923424ab9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14033,11 +13944,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7050475465706739952, guid: 1859ecce63f4e4949ac8830923424ab9,
-        type: 3}
-      propertyPath: gridElement
-      value: 
-      objectReference: {fileID: 3504404286423027238}
     - target: {fileID: 7050475465706739954, guid: 1859ecce63f4e4949ac8830923424ab9,
         type: 3}
       propertyPath: m_Name
@@ -14045,95 +13951,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1859ecce63f4e4949ac8830923424ab9, type: 3}
---- !u!1 &3504404286423027236 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7050475465706739954, guid: 1859ecce63f4e4949ac8830923424ab9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504404286423027235}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3504404286423027237 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2026390806997167265, guid: 1859ecce63f4e4949ac8830923424ab9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504404286423027235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3504404286423027236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acab28a643b55cc49b7b3b509b6908c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3504404286423027238 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7050475465706739950, guid: 1859ecce63f4e4949ac8830923424ab9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504404286423027235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3504404286423027236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf0c2fbcfec7a749854c19698bab3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3504404286423027239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3504404286423027236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 1
-  logTaskChanges: 0
-  group: 0
-  resetValuesOnRestart: 0
-  externalBehavior: {fileID: 0}
-  mBehaviorSource:
-    behaviorName: Patrolling Guard
-    behaviorDescription: 
-    mTaskData:
-      types: []
-      parentIndex: 
-      startIndex: 
-      variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(369.125,20.8750381)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(1,109)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
-        by AIBase","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(10.0190125,98.37201)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-231.724091,118.965454)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"WithinSight","NodeData":{"Offset":"(-80.61641,120.526276)","Comment":"Player
-        within sight"},"ID":4,"Name":"Within Sight","Instant":true,"SharedFOVmyFieldOfView":{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":0},"SharedAgenttargetAgent":{"Type":"SharedAgent","Name":"playerAgent","IsShared":true,"IsGlobal":true},"SharedGridElementtargetGE":{"Type":"SharedGridElement","Name":null},"Vector2InttargetPosition":{}},{"Type":"MoveTowards","NodeData":{"Offset":"(47.54582,120.526291)","Comment":"Chase
-        Player"},"ID":5,"Name":"Move Towards","Instant":true,"SharedVector2Intdestination":{"Type":"BehaviorDesigner.Runtime.SharedVector2Int","Name":"playerPosition","IsShared":true,"IsGlobal":true,"Vector2IntmValue":{}},"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":1}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(180,170)"},"ID":6,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(-179.999939,189.999969)"},"ID":7,"Name":"Move
-        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":2}},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-18.83176,211.309052)"},"ID":8,"Name":"Inverter","Instant":true,"Children":[{"Type":"CycleDestination","NodeData":{"Offset":"(10,130)"},"ID":9,"Name":"Cycle
-        Destination","Instant":true,"Transform[]destinations":[3,4],"Int32currentDestination":0,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":5}}]},{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(149.99971,179.999954)"},"ID":10,"Name":"Move
-        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":6}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(489.999939,173.333313)"},"ID":11,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(24.9999771,163.333374)"},"ID":12,"Name":"Move
-        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":7}}]}]}]},"Variables":[{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":8},{"Type":"SharedGridElement","Name":"myGridElement","IsShared":true,"GridElementmValue":9},{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":10},{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
-        by AIBase","Int32mValue":0}]}'
-      fieldSerializationData:
-        typeName: []
-        fieldNameHash: 
-        startIndex: 
-        dataPosition: 
-        unityObjects:
-        - {fileID: 3504404286423027237}
-        - {fileID: 5871136134261069523}
-        - {fileID: 5871136134261069523}
-        - {fileID: 1374613165}
-        - {fileID: 648855314}
-        - {fileID: 5871136134261069523}
-        - {fileID: 5871136134261069523}
-        - {fileID: 5871136134261069523}
-        - {fileID: 5871136134261069523}
-        - {fileID: 3504404286423027238}
-        - {fileID: 3504404286423027237}
-        byteData: 
-        byteDataArray: 
-      Version: 1.6.4
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 0
 --- !u!1001 &4516839512797875093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14208,18 +14025,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd09429a4f9b9224882f754340f6d604, type: 3}
---- !u!114 &5871136134261069523 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7050475465706739952, guid: 1859ecce63f4e4949ac8830923424ab9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3504404286423027235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3504404286423027236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7179416343040610371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14227,15 +14032,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7179416343417016974, guid: 98c3108e854891349a7f0e82ef0c88ff,
-        type: 3}
-      propertyPath: gridElement
-      value: 
-      objectReference: {fileID: 872112257}
+    - target: {fileID: 872112256, guid: 98c3108e854891349a7f0e82ef0c88ff, type: 3}
+      propertyPath: lightOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016975, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016977, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: handleInput._useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: lightRange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016979, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}

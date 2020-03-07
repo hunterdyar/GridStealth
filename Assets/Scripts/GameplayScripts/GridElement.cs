@@ -1,63 +1,64 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Sirenix.OdinInspector;
-using System;
+﻿using System;
 using Inventory;
+using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-public class GridElement : MonoBehaviour
+namespace GameplayScripts
 {
-	[Title("Configuration")] public TilemapManager tilemapManager;
-	public TileNode tileNode;
-	public bool solid = false;
-	public bool opaque = false;
-	[Title("Settings")] public int brightness;
-	public Vector2Int position => GridPosition();
-	[FormerlySerializedAs("OnNewPositionAction")] public Action onNewPositionAction;
-	public Action<Vector2Int> soundFromAction;
-	public InventoryItem item;
-	public bool destroyOnItemPickup = true;
-	public Vector2Int GridPosition()
+	public class GridElement : MonoBehaviour
 	{
-		return tilemapManager.WorldToCell(transform.position);
-	}
-
-	void Start()
-	{
-		OnNewPosition();
-	}
-
-	public void SoundFrom(Vector2Int source)
-	{
-		soundFromAction?.Invoke(source);
-	}
-
-	public void OnNewPosition()
-	{
-		//tell the previous tileNode and current tileNode if we are solid.
-		if (tileNode != null)
+		[Title("Configuration")] public TilemapManager tilemapManager;
+		public TileNode tileNode;
+		public bool solid = false;
+		public bool opaque = false;
+		[Title("Settings")] public int brightness;
+		public Vector2Int position => GridPosition();
+		[FormerlySerializedAs("OnNewPositionAction")] public Action onNewPositionAction;
+		public Action<Vector2Int> soundFromAction;
+		public InventoryItem item;
+		public bool destroyOnItemPickup = true;
+		public Vector2Int GridPosition()
 		{
-			if (tileNode.itemsHere.Contains(this))
-			{
-				tileNode.itemsHere.Remove(this);
-			}
+			return tilemapManager.WorldToCell(transform.position);
 		}
 
-		tileNode = tilemapManager.GetTileNode(position);
-		if (tileNode != null)
+		void Start()
 		{
-			if (!tileNode.itemsHere.Contains(this))
+			OnNewPosition();
+		}
+
+		public void SoundFrom(Vector2Int source)
+		{
+			soundFromAction?.Invoke(source);
+		}
+
+		public void OnNewPosition()
+		{
+			//tell the previous tileNode and current tileNode if we are solid.
+			if (tileNode != null)
 			{
-				tileNode.itemsHere.Add(this);
+				if (tileNode.itemsHere.Contains(this))
+				{
+					tileNode.itemsHere.Remove(this);
+				}
 			}
-			else
+
+			tileNode = tilemapManager.GetTileNode(position);
+			if (tileNode != null)
 			{
-				Debug.LogWarning("tile node already had gridElement. This should never happen.");
-			}
-		} //else: our object was moved where there isnt a tile. 
+				if (!tileNode.itemsHere.Contains(this))
+				{
+					tileNode.itemsHere.Add(this);
+				}
+				else
+				{
+					Debug.LogWarning("tile node already had gridElement. This should never happen.");
+				}
+			} //else: our object was moved where there isnt a tile. 
 
 		
-		onNewPositionAction?.Invoke();
+			onNewPositionAction?.Invoke();
+		}
 	}
 }

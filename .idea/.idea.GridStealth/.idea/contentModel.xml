@@ -2775,7 +2775,10 @@
             <e p="AIPattern.cs" t="Include" />
             <e p="Behaviors" t="Include">
               <e p="AgentStatusWithinSight.cs" t="Include" />
+              <e p="AtDestination.cs" t="Include" />
+              <e p="CycleDestination.cs" t="Include" />
               <e p="MoveTowards.cs" t="Include" />
+              <e p="MoveTowardsCurrentDestination.cs" t="Include" />
               <e p="SharedAgent.cs" t="Include" />
               <e p="SharedFOV.cs" t="Include" />
               <e p="SharedGridElement.cs" t="Include" />
@@ -2809,6 +2812,7 @@
           <e p="Inventory" t="Include">
             <e p="InventoryItem.cs" t="Include" />
             <e p="InventoryManager.cs" t="Include" />
+            <e p="InventoryUse.cs" t="Include" />
           </e>
           <e p="SOAGenerated" t="Include">
             <e p="Collections" t="Include">

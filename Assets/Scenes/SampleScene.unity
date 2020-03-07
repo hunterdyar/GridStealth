@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 161189407}
   - component: {fileID: 161189409}
   - component: {fileID: 161189408}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selected Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 252054055}
   - component: {fileID: 252054054}
   - component: {fileID: 252054053}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View - BottomBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,6 +946,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Item Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303665, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8295813362382303666, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -990,7 +1000,7 @@ GameObject:
   - component: {fileID: 471435962}
   - component: {fileID: 471435961}
   - component: {fileID: 471435960}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas - MasterCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1140,7 @@ GameObject:
   - component: {fileID: 484294670}
   - component: {fileID: 484294669}
   - component: {fileID: 484294668}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View - TurnSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1807,7 @@ GameObject:
   - component: {fileID: 555754331}
   - component: {fileID: 555754333}
   - component: {fileID: 555754332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selected Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2019,11 +2029,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: 0
   gridElement: {fileID: 0}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   destination: {x: 0, y: 0}
   facingDirection: {x: 0, y: 0}
   pushable: 1
+--- !u!1 &648855313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648855314}
+  m_Layer: 0
+  m_Name: B
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &648855314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648855313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6447916, y: 0.56154, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1939126668}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &672932009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2080,7 @@ GameObject:
   - component: {fileID: 672932011}
   - component: {fileID: 672932015}
   - component: {fileID: 672932016}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4479,7 +4520,7 @@ GameObject:
   - component: {fileID: 722568091}
   - component: {fileID: 722568093}
   - component: {fileID: 722568092}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4557,7 +4598,7 @@ GameObject:
   - component: {fileID: 782045018}
   - component: {fileID: 782045020}
   - component: {fileID: 782045019}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selected Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4724,6 +4765,18 @@ MonoBehaviour:
         m_CallState: 2
   GameEvent: playerDoesNothing
   ListenForAllGameEvents: 0
+--- !u!114 &872112257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7179416343417016972, guid: 98c3108e854891349a7f0e82ef0c88ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 7179416343040610371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872112251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0c2fbcfec7a749854c19698bab3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &872112260 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7179416343417016974, guid: 98c3108e854891349a7f0e82ef0c88ff,
@@ -4917,6 +4970,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Item Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303665, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8295813362382303666, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4947,7 +5010,7 @@ GameObject:
   - component: {fileID: 1286624928}
   - component: {fileID: 1286624927}
   - component: {fileID: 1286624934}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View - ItemSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5556,7 +5619,7 @@ GameObject:
   - component: {fileID: 1298817012}
   - component: {fileID: 1298817014}
   - component: {fileID: 1298817013}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5776,6 +5839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: 0
   gridElement: {fileID: 0}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   destination: {x: 0, y: 0}
@@ -5805,6 +5869,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0885405eed98d404881b89d49f5a3276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1374613164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374613165}
+  m_Layer: 0
+  m_Name: A
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1374613165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374613164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6447916, y: -4.43846, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1939126668}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1475712836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5926,6 +6020,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inventory Item Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813361128296055, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295813362382303665, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8295813362382303667, guid: 658b9f4c7daa8f24cb5de6249ab7e39c,
         type: 3}
@@ -8082,7 +8186,7 @@ GameObject:
   - component: {fileID: 1587801810}
   - component: {fileID: 1587801809}
   - component: {fileID: 1587801813}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Select Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10510,7 +10614,7 @@ GameObject:
   - component: {fileID: 1686257963}
   - component: {fileID: 1686257965}
   - component: {fileID: 1686257964}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10693,7 +10797,7 @@ GameObject:
   - component: {fileID: 1776587878}
   - component: {fileID: 1776587882}
   - component: {fileID: 1776587883}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13188,6 +13292,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1939126667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1939126668}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1939126668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939126667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6447916, y: 1.43846, z: -2.0266168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1374613165}
+  - {fileID: 648855314}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1997572153
 GameObject:
   m_ObjectHideFlags: 0
@@ -13203,7 +13339,7 @@ GameObject:
   - component: {fileID: 1997572157}
   - component: {fileID: 1997572156}
   - component: {fileID: 1997572155}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View - MoveDirSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13768,7 +13904,7 @@ GameObject:
   - component: {fileID: 2040457643}
   - component: {fileID: 2040457645}
   - component: {fileID: 2040457644}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13897,6 +14033,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7050475465706739952, guid: 1859ecce63f4e4949ac8830923424ab9,
+        type: 3}
+      propertyPath: gridElement
+      value: 
+      objectReference: {fileID: 3504404286423027238}
     - target: {fileID: 7050475465706739954, guid: 1859ecce63f4e4949ac8830923424ab9,
         type: 3}
       propertyPath: m_Name
@@ -13962,10 +14103,14 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(291,99)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(1,109)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
-        by AIBase","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"WithinSight","NodeData":{"Offset":"(-79,129)","Comment":"Player
-        within sight"},"ID":3,"Name":"Within Sight","Instant":true,"SharedFOVmyFieldOfView":{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":0},"SharedAgenttargetAgent":{"Type":"SharedAgent","Name":"playerAgent","IsShared":true,"IsGlobal":true},"SharedGridElementtargetGE":{"Type":"SharedGridElement","Name":null},"Vector2InttargetPosition":{}},{"Type":"MoveTowards","NodeData":{"Offset":"(81,129)","Comment":"Chase
-        Player"},"ID":4,"Name":"Move Towards","Instant":true,"SharedVector2Intdestination":{"Type":"BehaviorDesigner.Runtime.SharedVector2Int","Name":"playerPosition","IsShared":true,"IsGlobal":true,"Vector2IntmValue":{}},"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":1}}]}]},"Variables":[{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":2},{"Type":"SharedGridElement","Name":"myGridElement","IsShared":true,"GridElementmValue":3},{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":4},{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(369.125,20.8750381)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(1,109)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
+        by AIBase","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(10.0190125,98.37201)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-231.724091,118.965454)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"WithinSight","NodeData":{"Offset":"(-80.61641,120.526276)","Comment":"Player
+        within sight"},"ID":4,"Name":"Within Sight","Instant":true,"SharedFOVmyFieldOfView":{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":0},"SharedAgenttargetAgent":{"Type":"SharedAgent","Name":"playerAgent","IsShared":true,"IsGlobal":true},"SharedGridElementtargetGE":{"Type":"SharedGridElement","Name":null},"Vector2InttargetPosition":{}},{"Type":"MoveTowards","NodeData":{"Offset":"(47.54582,120.526291)","Comment":"Chase
+        Player"},"ID":5,"Name":"Move Towards","Instant":true,"SharedVector2Intdestination":{"Type":"BehaviorDesigner.Runtime.SharedVector2Int","Name":"playerPosition","IsShared":true,"IsGlobal":true,"Vector2IntmValue":{}},"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":1}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(180,170)"},"ID":6,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(-179.999939,189.999969)"},"ID":7,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":2}},{"Type":"CycleDestination","NodeData":{"Offset":"(-9.999943,189.999969)"},"ID":8,"Name":"Cycle
+        Destination","Instant":true,"Transform[]destinations":[3,4],"Int32currentDestination":0,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":5}},{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(149.99971,179.999954)"},"ID":9,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":6}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(489.999939,173.333313)"},"ID":10,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MoveTowardsCurrentDestination","NodeData":{"Offset":"(24.9999771,163.333374)"},"ID":11,"Name":"Move
+        Towards Destination","Instant":true,"SharedAgentmyAgent":{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":7}}]}]}]},"Variables":[{"Type":"SharedAgent","Name":"myAgent","IsShared":true,"AgentmValue":8},{"Type":"SharedGridElement","Name":"myGridElement","IsShared":true,"GridElementmValue":9},{"Type":"SharedFOV","Name":"myFOV","IsShared":true,"FOVmValue":10},{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"turnsCanTake","IsShared":true,"Tooltip":"Updated
         by AIBase","Int32mValue":0}]}'
       fieldSerializationData:
         typeName: []
@@ -13974,6 +14119,12 @@ MonoBehaviour:
         dataPosition: 
         unityObjects:
         - {fileID: 3504404286423027237}
+        - {fileID: 5871136134261069523}
+        - {fileID: 5871136134261069523}
+        - {fileID: 1374613165}
+        - {fileID: 648855314}
+        - {fileID: 5871136134261069523}
+        - {fileID: 5871136134261069523}
         - {fileID: 5871136134261069523}
         - {fileID: 5871136134261069523}
         - {fileID: 3504404286423027238}
@@ -14076,6 +14227,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7179416343417016974, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: gridElement
+      value: 
+      objectReference: {fileID: 872112257}
     - target: {fileID: 7179416343417016975, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: m_Name

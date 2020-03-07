@@ -1,4 +1,5 @@
 ﻿using BehaviorDesigner.Runtime;
+using GameplayScripts;
 
 [System.Serializable]
 public class SharedGridElement : SharedVariable<GridElement>

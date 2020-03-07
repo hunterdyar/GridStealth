@@ -52,6 +52,8 @@ MonoBehaviour:
   solid: 0
   opaque: 0
   brightness: 0
+  item: {fileID: 0}
+  destroyOnItemPickup: 1
 --- !u!212 &7050475465706739951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f13c91fc1096404caa4b77e2ef6edb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: 0
   gridElement: {fileID: 0}
   tilemapManager: {fileID: 11400000, guid: bf220b62787b89f46aed75e75d88f29f, type: 2}
   destination: {x: 0, y: 0}

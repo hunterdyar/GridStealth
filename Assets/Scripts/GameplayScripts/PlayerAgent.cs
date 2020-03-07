@@ -13,6 +13,7 @@ public class PlayerAgent : Agent
 	void Awake()
 	{
 		status = AgentStatus.Player;
+		base.Awake();
 	}
 	protected void Start()
 	{

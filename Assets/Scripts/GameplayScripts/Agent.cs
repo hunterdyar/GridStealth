@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityRigidbody;
 using GridManagement;
 using UnityEngine;
 
@@ -21,9 +22,9 @@ namespace GameplayScripts
 	public class Agent : MonoBehaviour
 	{
 		public AgentStatus status;
-		[HideInInspector] public GridElement gridElement;
+		public GridElement gridElement;
 		public TilemapManager tilemapManager;
-		public Vector2Int position => gridElement.position;
+		public Vector2Int position => tilemapManager.WorldToCell(transform.position);
 		public Vector2Int destination;
 		[HideInInspector] public Queue<Vector2Int> pathToDestination = new Queue<Vector2Int>();
 		
@@ -36,7 +37,7 @@ namespace GameplayScripts
 		public bool atDestination => destination == position;
 		Coroutine ambientPathfinding;
 
-		private void Awake()
+		protected void Awake()
 		{
 			pathfind = new Pathfind {tilemapManager = tilemapManager};
 			gridElement = GetComponent<GridElement>();
@@ -69,7 +70,6 @@ namespace GameplayScripts
 			Vector2Int dir = next - position;
 			return Move(dir);
 		}
-
 		public TurnInfo Move(Vector2Int dir, bool useUpTurn = true)
 		{
 			TurnInfo info = new TurnInfo {useUpTurn = useUpTurn};
@@ -171,8 +171,19 @@ namespace GameplayScripts
 			return true;
 		}
 
-		public Pathfind SetDestination(TileNode destination)
+		public Pathfind GetPathfinder()
 		{
+			return pathfind;
+		}
+		public GridManagement.Pathfind SetDestination(TileNode destination)
+		{
+			pathfind.pathStatus = 0;
+			StartCoroutine(WaitForPathThenQueueMoves(destination));
+			return pathfind;
+		}
+		public Pathfind SetDestination(Vector3 worldSpacePos)
+		{
+			var destination = tilemapManager.GetTileNode(tilemapManager.WorldToCell(worldSpacePos));
 			pathfind.pathStatus = 0;
 			StartCoroutine(WaitForPathThenQueueMoves(destination));
 			return pathfind;

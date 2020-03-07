@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameplayScripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Agent))]

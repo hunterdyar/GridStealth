@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
+using GameplayScripts;
 
 [TaskCategory("Grid System")]
 public class WithinSight : Conditional

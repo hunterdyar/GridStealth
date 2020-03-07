@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameplayScripts;
 using GridManagement;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -63,6 +64,11 @@ using UnityEngine;
 		// Update is called once per frame
 		void Update()
 		{
+			if (_agent.status == AgentStatus.Dead)
+			{
+				return;
+				
+			}
 			if (!handleInput.Value)
 			{
 				return;

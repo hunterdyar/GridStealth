@@ -1,4 +1,5 @@
 ﻿using BehaviorDesigner.Runtime;
+using Gameplay;
 
 [System.Serializable]
 public class SharedFOV : SharedVariable<FOV>

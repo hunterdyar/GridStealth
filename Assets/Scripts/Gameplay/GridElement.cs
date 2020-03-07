@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace GameplayScripts
+namespace Gameplay
 {
 	public class GridElement : MonoBehaviour
 	{

@@ -2787,7 +2787,7 @@
             </e>
             <e p="FloorTrap.cs" t="Include" />
           </e>
-          <e p="GameplayScripts" t="Include">
+          <e p="Gameplay" t="Include">
             <e p="Agent.cs" t="Include" />
             <e p="FOV.cs" t="Include" />
             <e p="GameFlowManager.cs" t="Include" />

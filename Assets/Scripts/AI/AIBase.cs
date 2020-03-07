@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using BehaviorDesigner.Runtime;
-using GameplayScripts;
+using Gameplay;
 
 [RequireComponent(typeof(GridElement))]
 public class AIBase : MonoBehaviour, IComparable<AIBase>

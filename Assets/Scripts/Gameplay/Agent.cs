@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using BehaviorDesigner.Runtime.Tasks.Unity.UnityRigidbody;
 using GridManagement;
 using UnityEngine;
 
-namespace GameplayScripts
+namespace Gameplay
 {
 	public enum AgentStatus
 	{

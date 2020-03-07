@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameplayScripts;
+using Gameplay;
 using Ludiq.PeekCore.CodeDom;
 using ScriptableObjectArchitecture;
 using UnityEngine;

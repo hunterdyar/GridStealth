@@ -1,5 +1,5 @@
 ﻿using BehaviorDesigner.Runtime;
-using GameplayScripts;
+using Gameplay;
 
 [System.Serializable]
 public class SharedAgent : SharedVariable<Agent>

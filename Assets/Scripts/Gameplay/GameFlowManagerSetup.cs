@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameplayScripts
+namespace Gameplay
 {
 	public class GameFlowManagerSetup : MonoBehaviour
 	{

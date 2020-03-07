@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
-using GameplayScripts;
+using Gameplay;
+
 // ReSharper disable UnassignedField.Global
 // ReSharper disable CheckNamespace
 

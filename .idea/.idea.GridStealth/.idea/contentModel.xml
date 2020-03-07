@@ -2774,6 +2774,7 @@
             <e p="AIPatrolAB.cs" t="Include" />
             <e p="AIPattern.cs" t="Include" />
             <e p="Behaviors" t="Include">
+              <e p="AgentStatusWithinSight.cs" t="Include" />
               <e p="MoveTowards.cs" t="Include" />
               <e p="SharedAgent.cs" t="Include" />
               <e p="SharedFOV.cs" t="Include" />

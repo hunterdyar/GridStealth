@@ -8,9 +8,9 @@ using ScriptableObjectArchitecture;
 [RequireComponent(typeof(GridElement))]
 public class FOV : MonoBehaviour
 {
-	GridElement gridElement;
-	Agent agent;
-	GameFlowManager gfm;
+	GridElement _gridElement;
+	Agent _agent;
+	GameFlowManager _gfm;
 	public int viewRange;
 	public bool canSee = true;
 	public List<GridElement> itemsISee;
@@ -24,8 +24,8 @@ public class FOV : MonoBehaviour
 		agentsISee = new List<Agent>();
 		itemsISee = new List<GridElement>();
 		placesISee = new List<Vector2Int>();
-		agent = GetComponent<Agent>();
-		gridElement = GetComponent<GridElement>();
+		_agent = GetComponent<Agent>();
+		_gridElement = GetComponent<GridElement>();
 		//the WithinSight behavior will run CheckSight before ... checking the sight...
 		//gridElement.OnNewPositionAction += CheckSight;
 	}
@@ -51,15 +51,15 @@ public class FOV : MonoBehaviour
 			return;
 		}
 
-		Vector2Int[] c = GridUtility.Arc(gridElement.position, agent.facingDirection, viewRange, 45);
-		foreach (Vector2Int p in c)
+		var c = GridUtility.Arc(_gridElement.position, _agent.facingDirection, viewRange, 45);
+		foreach (var p in c)
 		{
-			TileNode tn = gridElement.tilemapManager.GetTileNode(p);
+			var tn = _gridElement.tilemapManager.GetTileNode(p);
 			if (tn != null)
 			{
 				if (tn.brightness > visibilityThreshold.Value)
 				{
-					if (gridElement.tilemapManager.LineOfSight(tn.position, gridElement.position))
+					if (_gridElement.tilemapManager.LineOfSight(tn.position, _gridElement.position))
 					{
 						foreach (GridElement item in tn.itemsHere)
 						{

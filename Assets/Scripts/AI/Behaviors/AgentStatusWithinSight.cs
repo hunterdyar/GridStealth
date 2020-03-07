@@ -5,6 +5,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using GameplayScripts;
 // ReSharper disable UnassignedField.Global
+// ReSharper disable CheckNamespace
 
 [TaskCategory("Grid System")]
 public class AgentStatusWithinSight : Conditional

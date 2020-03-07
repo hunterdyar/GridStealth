@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameFlowManagerSetup : MonoBehaviour
+namespace GameplayScripts
 {
-	public GameFlowManager manager;
-
-	void Awake()
+	public class GameFlowManagerSetup : MonoBehaviour
 	{
-		manager.runner = this;
-		GameFlowManager.instance = manager;
-		manager.Init();
+		public GameFlowManager manager;
+
+		void Awake()
+		{
+			manager.runner = this;
+			GameFlowManager.instance = manager;
+			manager.Init();
+		}
 	}
 }

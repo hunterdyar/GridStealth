@@ -13,7 +13,7 @@ public class TurnInfo
 	public bool blockPlayerMovement = false;
 	public bool blockAIMovement = false;
 	public AIBase ai;
-	public GridElement gridElement;
+	public readonly GridElement gridElement;
 	public Vector2Int initialLocation;
 
 	public TurnInfo()

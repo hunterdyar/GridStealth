@@ -1,28 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Inventory;
-using ScriptableObjectArchitecture;
+﻿using ScriptableObjectArchitecture;
 using UnityEngine;
 
-public class InventoryUse : MonoBehaviour
+namespace Inventory
 {
-	public InventoryItemCollection inventory;
+	public class InventoryUse : MonoBehaviour
+	{
+		public InventoryItemCollection inventory;
 
-	public InventoryItem knifeItem;
-	public InventoryItem flashLightItem;
+		public InventoryItem knifeItem;
+		public InventoryItem flashLightItem;
 
 	
-	public void UseItem(InventoryItem item)
-	{
-		if (item == knifeItem)
+		public void UseItem(InventoryItem item)
 		{
-			Stab();
+			if (item == knifeItem)
+			{
+				Stab();
+			}
 		}
-	}
 
-	public void Stab()
-	{
-		//STABBY STAB STAB
-	}
+		public void Stab()
+		{
+			//STABBY STAB STAB
+		}
 
+	}
 }

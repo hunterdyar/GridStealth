@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using GameplayScripts;
 using Sirenix.OdinInspector;
 using ScriptableObjectArchitecture;
+using UnityEngine.Serialization;
 
 public class GameFlowManager : ScriptableObject
 {
@@ -12,14 +14,14 @@ public class GameFlowManager : ScriptableObject
 	public IntReference playerTurnsTaken;
 	public FloatReference enemySubTurnDelay;
 	private int playerTurnsLeft => playerTurnsAllowed.Value - playerTurnsTaken.Value;
-	private int AITurnsTaken;
+	private int _aiTurnsTaken;
 	public GameFlowManagerSetup runner;
 	public static GameFlowManager instance;
 	public TilemapManager tilemapManager;
-	public Action PostGridElementsUpdatedAction;
-	public Action PlayerInNewLocationAction; //fires before enemies move.
+	[FormerlySerializedAs("PostGridElementsUpdatedAction")] public Action postGridElementsUpdatedAction;
+	[FormerlySerializedAs("PlayerInNewLocationAction")] public Action playerInNewLocationAction; //fires before enemies move.
 	public BoolReference playerCanMove; //waiting for player input.
-	List<AIBase> lumpAI = new List<AIBase>();
+	readonly List<AIBase> _lumpAi = new List<AIBase>();
 
 	[Button("Set Singleton")]
 	public void SetSingleton()
@@ -44,7 +46,7 @@ public class GameFlowManager : ScriptableObject
 		}
 
 		playerCanMove.Value = false;
-		PlayerInNewLocationAction?.Invoke();
+		playerInNewLocationAction?.Invoke();
 		//AIAgents to take their turn
 		playerTurnsTaken.Value = 0;
 		StartAITurn(1);
@@ -57,7 +59,7 @@ public class GameFlowManager : ScriptableObject
 
 	void UpdateLights()
 	{
-		PostGridElementsUpdatedAction?.Invoke(); //i remembered the null operator for once
+		postGridElementsUpdatedAction?.Invoke(); //i remembered the null operator for once
 		tilemapManager.UpdateBrightnessDisplay();
 	}
 
@@ -69,12 +71,12 @@ public class GameFlowManager : ScriptableObject
 	IEnumerator AIDoMove(int subTurn)
 	{
 		SortAI();
-		List<TurnInfo> playerBlockingTurns = new List<TurnInfo>();
-		foreach (AIBase ai in lumpAI)
+		var playerBlockingTurns = new List<TurnInfo>();
+		foreach (AIBase ai in _lumpAi)
 		{
 			if (subTurn <= ai.turnsCanTake)
 			{
-				TurnInfo info = ai.TakeTurn(); //this takes the actual turn
+				var info = ai.TakeTurn(); //this takes the actual turn
 				if (info.blockPlayerMovement)
 				{
 					playerBlockingTurns.Add(info);
@@ -89,7 +91,7 @@ public class GameFlowManager : ScriptableObject
 		//all the ai have started their turn coroutines before this wait is called, so they should animate at the same time.
 
 		//This loop wont finish until every player blocking turninfo is false.
-		foreach (TurnInfo pbt in playerBlockingTurns)
+		foreach (var pbt in playerBlockingTurns)
 		{
 			while (pbt.blockPlayerMovement || pbt.blockAIMovement)
 			{
@@ -104,7 +106,7 @@ public class GameFlowManager : ScriptableObject
 		//thats one turn down. Now lets look towards the next, if there should be one.
 
 		bool takeAnotherAITurn = false;
-		foreach (AIBase ai in lumpAI)
+		foreach (AIBase ai in _lumpAi)
 		{
 			if (subTurn < ai.turnsCanTake)
 			{
@@ -129,21 +131,21 @@ public class GameFlowManager : ScriptableObject
 
 	public void RegisterAI(AIBase ai)
 	{
-		lumpAI.Add(ai);
+		_lumpAi.Add(ai);
 	}
 
 	public void DeRegisterAI(AIBase ai)
 	{
-		if (lumpAI.Contains(ai))
+		if (_lumpAi.Contains(ai))
 		{
-			lumpAI.Remove(ai);
+			_lumpAi.Remove(ai);
 		}
 	}
 
 	[Button("sort AI")]
 	void SortAI()
 	{
-		lumpAI.Sort();
+		_lumpAi.Sort();
 	}
 
 	//

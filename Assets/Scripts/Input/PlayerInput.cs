@@ -26,12 +26,12 @@ using UnityEngine;
 
 		void OnEnable()
 		{
-			gfm.PlayerInNewLocationAction += _agent.CachePathfind;
+			gfm.playerInNewLocationAction += _agent.CachePathfind;
 		}
 
 		void OnDisable()
 		{
-			gfm.PlayerInNewLocationAction -= _agent.CachePathfind;
+			gfm.playerInNewLocationAction -= _agent.CachePathfind;
 		}
 
 		public void GoNorth()
@@ -105,8 +105,8 @@ using UnityEngine;
 			//pathfinding test.
 			if (UnityEngine.Input.GetMouseButtonDown(1))
 			{
-				Vector2Int clickPos = _tilemapManager.WorldToCell(Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition));
-				TileNode clickNode = _tilemapManager.GetTileNode(clickPos);
+				var clickPos = _tilemapManager.WorldToCell(Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition));
+				var clickNode = _tilemapManager.GetTileNode(clickPos);
 				if (clickNode == null)
 				{
 					return;
@@ -119,7 +119,7 @@ using UnityEngine;
 			if (UnityEngine.Input.GetMouseButtonDown(0))
 			{
 				//if input for movement...
-				Vector2Int clickPos = _tilemapManager.WorldToCell(Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition));
+				var clickPos = _tilemapManager.WorldToCell(Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition));
 
 				if (_agent.position == clickPos)
 				{
@@ -128,25 +128,11 @@ using UnityEngine;
 
 				if (_agent.position.x == clickPos.x)
 				{
-					if (_agent.position.y < clickPos.y)
-					{
-						inputStack.Enqueue(Vector2Int.up);
-					}
-					else
-					{
-						inputStack.Enqueue(Vector2Int.down);
-					}
+					inputStack.Enqueue(_agent.position.y < clickPos.y ? Vector2Int.up : Vector2Int.down);
 				}
 				else if (_agent.position.y == clickPos.y)
 				{
-					if (_agent.position.x < clickPos.x)
-					{
-						inputStack.Enqueue(Vector2Int.right);
-					}
-					else
-					{
-						inputStack.Enqueue(Vector2Int.left);
-					}
+					inputStack.Enqueue(_agent.position.x < clickPos.x ? Vector2Int.right : Vector2Int.left);
 				}
 			} //end mouse movement
 
@@ -164,7 +150,7 @@ using UnityEngine;
 		IEnumerator WaitAndQueuePath(Vector2Int destination)
 		{
 			bool pathfailed = false;
-			Pathfind finder = _agent.SetDestination(destination);
+			var finder = _agent.SetDestination(destination);
 			while (finder.pathStatus != 1)
 			{
 				if (finder.pathStatus == -1)
@@ -184,10 +170,10 @@ using UnityEngine;
 				}
 
 				int steps = Mathf.Min(gfm.playerTurnsAllowed.Value - gfm.playerTurnsTaken.Value, _agent.pathToDestination.Count - 1); //-1 is because first item in the queue should be current location, I think.
-				Vector2Int current = _agent.position;
+				var current = _agent.position;
 				for (int i = 0; i < steps + 1; i++)
 				{
-					Vector2Int next = _agent.pathToDestination.Dequeue();
+					var next = _agent.pathToDestination.Dequeue();
 					if (current != next)
 					{
 						inputStack.Enqueue(next - current);

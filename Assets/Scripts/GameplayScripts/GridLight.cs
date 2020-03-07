@@ -31,12 +31,12 @@ public class GridLight : MonoBehaviour
 
 	void OnEnable()
 	{
-		gfm.PostGridElementsUpdatedAction += Illuminate;
+		gfm.postGridElementsUpdatedAction += Illuminate;
 	}
 
 	void OnDisable()
 	{
-		gfm.PostGridElementsUpdatedAction -= Illuminate;
+		gfm.postGridElementsUpdatedAction -= Illuminate;
 	}
 
 	[Button("Illuminate")]

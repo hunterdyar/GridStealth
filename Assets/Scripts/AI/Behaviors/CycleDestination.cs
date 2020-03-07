@@ -5,6 +5,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using GameplayScripts;
 using GridManagement;
+// ReSharper disable MemberCanBePrivate.Global
 
 [TaskCategory("Grid System")]
 public class CycleDestination : Action

@@ -30,11 +30,11 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 		//Update Behavior Tree Variables
 		if (GetComponent<BehaviorTree>() != null)
 		{
-			SharedAgent myAgentVar = (SharedAgent) tree.GetVariable("myAgent");
+			var myAgentVar = (SharedAgent) tree.GetVariable("myAgent");
 			myAgentVar.Value = agent;
-			SharedGridElement myGridElement = (SharedGridElement) tree.GetVariable("myGridElement");
+			var myGridElement = (SharedGridElement) tree.GetVariable("myGridElement");
 			myGridElement.Value = gridElement;
-			SharedFOV myFOV = (SharedFOV) tree.GetVariable("myFOV");
+			var myFOV = (SharedFOV) tree.GetVariable("myFOV");
 			myFOV.Value = GetComponent<FOV>();
 		}
 	}
@@ -54,16 +54,13 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 	{
 		if (tree != null)
 		{
-			SharedInt turnsCanTakeVar = (SharedInt) tree.GetVariable("turnsCanTake");
+			var turnsCanTakeVar = (SharedInt) tree.GetVariable("turnsCanTake");
 			turnsCanTakeVar.Value = turnsCanTake;
 
 			BehaviorManager.instance.Tick();
 		}
 
-		TurnInfo info = new TurnInfo(this);
-		info.turnInMotion = false;
-		info.blockPlayerMovement = false;
-		info.turnTaken = false;
+		var info = new TurnInfo(this) {turnInMotion = false, blockPlayerMovement = false, turnTaken = false};
 		return info;
 	}
 

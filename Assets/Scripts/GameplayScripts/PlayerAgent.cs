@@ -10,15 +10,14 @@ public class PlayerAgent : Agent
 	public GameFlowManager gfm;
 	public SharedVector2Int sharedPosition;
 
-	void Awake()
+	new void Awake()
 	{
 		status = AgentStatus.Player;
 		base.Awake();
 	}
 	protected void Start()
 	{
-		SharedAgent playerAgent = new SharedAgent();
-		playerAgent.Value = this;
+		var playerAgent = new SharedAgent {Value = this};
 		GlobalVariables.Instance.SetVariable("playerAgent", playerAgent);
 		sharedPosition.Value = position;
 	}

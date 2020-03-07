@@ -13,16 +13,12 @@ namespace GameplayScripts
 		public bool solid = false;
 		public bool opaque = false;
 		[Title("Settings")] public int brightness;
-		public Vector2Int position => GridPosition();
+		public Vector2Int position => tilemapManager.WorldToCell(transform.position);
 		[FormerlySerializedAs("OnNewPositionAction")] public Action onNewPositionAction;
 		public Action<Vector2Int> soundFromAction;
 		public InventoryItem item;
 		public bool destroyOnItemPickup = true;
-		public Vector2Int GridPosition()
-		{
-			return tilemapManager.WorldToCell(transform.position);
-		}
-
+		
 		void Start()
 		{
 			OnNewPosition();
@@ -55,7 +51,7 @@ namespace GameplayScripts
 				{
 					Debug.LogWarning("tile node already had gridElement. This should never happen.");
 				}
-			} //else: our object was moved where there isnt a tile. 
+			} //else: our object was moved where there isn't a tile. 
 
 		
 			onNewPositionAction?.Invoke();

@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime;
+using GameplayScripts;
+using Inventory;
 
 public class PlayerAgent : Agent
 {
 	public GameFlowManager gfm;
 	public SharedVector2Int sharedPosition;
 
+	void Awake()
+	{
+		status = AgentStatus.Player;
+	}
 	protected void Start()
 	{
 		SharedAgent playerAgent = new SharedAgent();

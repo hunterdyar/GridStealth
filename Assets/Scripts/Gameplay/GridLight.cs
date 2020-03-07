@@ -7,8 +7,15 @@ namespace Gameplay
 {
 	public enum GridLightType
 	{
-		circle,
-		arc
+		Circle,
+		Arc
+	}
+
+	public enum GridLightCuriosity
+	{
+		Normal,
+		Curious,
+		VeryCurious,
 	}
 
 	[RequireComponent(typeof(GridElement))]
@@ -59,11 +66,11 @@ namespace Gameplay
 			}
 
 			Vector2Int[] c = new Vector2Int[0];
-			if (gridLightType == GridLightType.circle)
+			if (gridLightType == GridLightType.Circle)
 			{
 				c = GridUtility.Circle(position, lightRange);
 			}
-			else if (gridLightType == GridLightType.arc)
+			else if (gridLightType == GridLightType.Arc)
 			{
 				c = GridUtility.Arc(position, agent.facingDirection, lightRange, 45);
 			}

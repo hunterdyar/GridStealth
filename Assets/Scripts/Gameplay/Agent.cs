@@ -34,7 +34,7 @@ namespace Gameplay
 		public Action atDestinationAction;
 		public bool pushable;
 		public bool atDestination => destination == position;
-		Coroutine ambientPathfinding;
+		Coroutine _ambientPathfinding;
 
 		protected void Awake()
 		{
@@ -232,10 +232,10 @@ namespace Gameplay
 		{
 			if (pathfind.running)
 			{
-				StopCoroutine(ambientPathfinding);
+				StopCoroutine(_ambientPathfinding);
 			}
 
-			ambientPathfinding = StartCoroutine(pathfind.FindAllPaths(gridElement.tileNode, 10));
+			_ambientPathfinding = StartCoroutine(pathfind.FindAllPaths(gridElement.tileNode, 10));
 		}
 	}
 }

@@ -54,6 +54,7 @@ public class AIBase : MonoBehaviour, IComparable<AIBase>
 			myFOV.Value = GetComponent<FOV>();
 		}
 	}
+	
 
 	public void OnEnable()
 	{

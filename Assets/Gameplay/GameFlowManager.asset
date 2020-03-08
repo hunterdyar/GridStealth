@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameFlowManager
   m_EditorClassIdentifier: 
   startingPlayerTurnsAllowed:
-    _useConstant: 1
+    _useConstant: 0
     _constantValue: 3
     _variable: {fileID: 0}
   playerTurnsAllowed:

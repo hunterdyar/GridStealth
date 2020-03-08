@@ -22,11 +22,9 @@ namespace UI
 
         public void UseItemButton()
         {
-            if (item != null)
-            {
-                item.UseItem();
-                gfm.PlayerTookTurn();
-            }
+            if (item == null) return;
+            item.UseItem();
+            gfm.PlayerTookTurn();
         }
         public void UpdateSelf()
         {

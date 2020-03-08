@@ -24,7 +24,6 @@ namespace UI
         {
             if (item != null)
             {
-                Debug.Log("use item button");
                 item.UseItem();
                 gfm.PlayerTookTurn();
             }

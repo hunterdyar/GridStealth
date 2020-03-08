@@ -15,14 +15,14 @@ MonoBehaviour:
   startingPlayerTurnsAllowed:
     _useConstant: 0
     _constantValue: 3
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 4373f811dd24c704082f4633bbdbb0b9, type: 2}
   playerTurnsAllowed:
     _useConstant: 0
     _constantValue: 3
     _variable: {fileID: 11400000, guid: c07ea5b1cf322944da542518df11a2e1, type: 2}
   playerTurnsTaken:
     _useConstant: 1
-    _constantValue: 1
+    _constantValue: 0
     _variable: {fileID: 0}
   enemySubTurnDelay:
     _useConstant: 1

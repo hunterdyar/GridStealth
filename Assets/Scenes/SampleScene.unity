@@ -14044,6 +14044,11 @@ PrefabInstance:
     - target: {fileID: 7179416343417016977, guid: 98c3108e854891349a7f0e82ef0c88ff,
         type: 3}
       propertyPath: handleInput._useConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179416343417016977, guid: 98c3108e854891349a7f0e82ef0c88ff,
+        type: 3}
+      propertyPath: handleInput._constantValue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7179416343417016978, guid: 98c3108e854891349a7f0e82ef0c88ff,
